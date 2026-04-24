@@ -1,0 +1,309 @@
+{
+ "actions": [],
+ "autoname": "DNTN-.YYYY.-.#####",
+ "creation": "2026-04-09 14:53:55.887912",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "donor_section",
+  "donor",
+  "donor_name",
+  "col_break_donor",
+  "company",
+  "campaign",
+  "type_section",
+  "frequency",
+  "col_break_type",
+  "donation_via",
+  "processed_donation_section",
+  "payment_gateway",
+  "gate_subscription_id",
+  "column_break_dkqd",
+  "subscription_status",
+  "manual_section",
+  "donation_date",
+  "currency",
+  "amount",
+  "acknowledgment_sent",
+  "col_break_amount",
+  "exchange_rate",
+  "amount_usd",
+  "acknowledgment_date",
+  "accounting_section",
+  "status",
+  "column_break_axcq",
+  "sales_invoice",
+  "communication_section",
+  "donor_note",
+  "col_break_comm",
+  "is_anonymous",
+  "internal_notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "donor_section",
+   "fieldtype": "Section Break",
+   "label": "Donor"
+  },
+  {
+   "bold": 1,
+   "fieldname": "donor",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Donor",
+   "options": "Donor",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fetch_from": "donor.donor_name",
+   "fetch_if_empty": 1,
+   "fieldname": "donor_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Donor Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_break_donor",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "donation_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Donation Date"
+  },
+  {
+   "fieldname": "campaign",
+   "fieldtype": "Link",
+   "label": "Campaign",
+   "options": "Donation Campaign",
+   "reqd": 1
+  },
+  {
+   "default": "USD",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount",
+   "options": "currency"
+  },
+  {
+   "fieldname": "col_break_amount",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "description": "Rate against USD (functional currency). Fetch from ERPNext Currency Exchange or enter manually.",
+   "fieldname": "exchange_rate",
+   "fieldtype": "Float",
+   "label": "Exchange Rate (to USD)",
+   "precision": "6"
+  },
+  {
+   "description": "Computed: Amount \u00d7 Exchange Rate. Used for USD-basis reporting.",
+   "fieldname": "amount_usd",
+   "fieldtype": "Currency",
+   "label": "Amount (USD)",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "type_section",
+   "fieldtype": "Section Break",
+   "label": "Type & Frequency"
+  },
+  {
+   "default": "One-Time",
+   "fieldname": "frequency",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Frequency",
+   "options": "One-Time\nMonthly\nQuarterly\nAnnual",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_break_type",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Mirror of Stripe subscription state. Updated by webhook \u2013 do not edit manually.",
+   "fieldname": "subscription_status",
+   "fieldtype": "Select",
+   "label": "Subscription Status",
+   "options": "\nActive\nPaused\nCancelled\nIncomplete",
+   "read_only": 1
+  },
+  {
+   "description": "Gateway used for this donation.",
+   "fieldname": "payment_gateway",
+   "fieldtype": "Link",
+   "label": "Payment Gateway",
+   "options": "Payment Gateway"
+  },
+  {
+   "fieldname": "accounting_section",
+   "fieldtype": "Section Break",
+   "label": "Accounting"
+  },
+  {
+   "bold": 1,
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Draft\nInvoiced\nPaid\nFailed\nRefunded\nCancelled",
+   "read_only": 1
+  },
+  {
+   "description": "For one-time donations: single invoice created on submit. For recurring: see Donation Payment linked to this donation.",
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "options": "Sales Invoice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "communication_section",
+   "fieldtype": "Section Break",
+   "label": "Communication"
+  },
+  {
+   "default": "0",
+   "fieldname": "acknowledgment_sent",
+   "fieldtype": "Check",
+   "label": "Acknowledgment Sent"
+  },
+  {
+   "fieldname": "acknowledgment_date",
+   "fieldtype": "Date",
+   "label": "Acknowledgment Date"
+  },
+  {
+   "fieldname": "col_break_comm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Suppress donor name in public reports.",
+   "fetch_from": "donor.is_anonymous",
+   "fetch_if_empty": 1,
+   "fieldname": "is_anonymous",
+   "fieldtype": "Check",
+   "label": "Anonymous"
+  },
+  {
+   "description": "Optional message submitted by the donor via the portal.",
+   "fieldname": "donor_note",
+   "fieldtype": "Small Text",
+   "label": "Donor Note"
+  },
+  {
+   "description": "Staff only \u2013 not visible to donor.",
+   "fieldname": "internal_notes",
+   "fieldtype": "Small Text",
+   "label": "Internal Notes"
+  },
+  {
+   "fetch_from": "campaign.donation_via",
+   "fieldname": "donation_via",
+   "fieldtype": "Data",
+   "label": "Donation Type",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Donation",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "manual_section",
+   "fieldtype": "Section Break",
+   "label": "Manual Donation"
+  },
+  {
+   "description": "Populated automatically for recurring donations. Stripe sub_xxxxx identifier.",
+   "fieldname": "gate_subscription_id",
+   "fieldtype": "Data",
+   "label": "Gateway Subscription ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "processed_donation_section",
+   "fieldtype": "Section Break",
+   "label": "Processed Donation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_dkqd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_axcq",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-04-09 19:00:50.862401",
+ "modified_by": "Administrator",
+ "module": "Frappe Giving",
+ "name": "Donation",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "System Manager",
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "cancel": 1,
+   "create": 1,
+   "read": 1,
+   "role": "Accounts Manager",
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Accounts User"
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "donor_name,donor,status",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "donor_name",
+ "track_changes": 1
+}

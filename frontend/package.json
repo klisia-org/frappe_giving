@@ -1,0 +1,25 @@
+{
+  "name": "frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --base=/assets/frappe_giving/frontend/ && yarn copy-html-entry",
+    "preview": "vite preview",
+    "copy-html-entry": "cp ../frappe_giving/public/frontend/index.html ../frappe_giving/www/donate.html"
+  },
+  "dependencies": {
+    "@stripe/stripe-js": "^9.3.1",
+    "socket.io-client": "^4.5.1",
+    "vue": "^3.5.32",
+    "vue-router": "^4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.6",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.10",
+    "tailwindcss": "^3.4.19",
+    "vite": "^8.0.10"
+  }
+}

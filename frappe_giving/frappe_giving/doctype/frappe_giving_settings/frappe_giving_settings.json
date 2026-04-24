@@ -1,0 +1,47 @@
+{
+  "name": "Frappe Giving Settings",
+  "doctype": "DocType",
+  "module": "Frappe Giving",
+  "issingle": 1,
+  "track_changes": 1,
+  "engine": "InnoDB",
+  "fields": [
+    {
+      "fieldname": "stripe_section",
+      "fieldtype": "Section Break",
+      "label": "Stripe"
+    },
+    {
+      "fieldname": "stripe_settings",
+      "fieldtype": "Link",
+      "label": "Stripe Settings",
+      "options": "Stripe Settings",
+      "description": "Which Stripe Settings record (from the payments app) provides the publishable/secret keys."
+    },
+    {
+      "fieldname": "stripe_webhook_secret",
+      "fieldtype": "Password",
+      "label": "Stripe Webhook Secret",
+      "description": "Signing secret from the Stripe Dashboard webhook endpoint (whsec_...). Required for webhook verification."
+    },
+    {
+      "fieldname": "col_break_stripe",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "enable_live_mode",
+      "fieldtype": "Check",
+      "label": "Live Mode",
+      "default": 0,
+      "description": "Cosmetic flag — the actual mode is determined by which Stripe Settings record is selected above."
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1
+    }
+  ]
+}

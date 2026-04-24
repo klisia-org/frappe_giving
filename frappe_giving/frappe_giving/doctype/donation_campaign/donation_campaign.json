@@ -1,0 +1,159 @@
+{
+ "actions": [],
+ "autoname": "field:campaign_name",
+ "creation": "2026-04-09 14:53:55.786749",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "campaign_name",
+  "status",
+  "default",
+  "donation_via",
+  "col_break_1",
+  "start_date",
+  "end_date",
+  "payment_gateway",
+  "goal_section",
+  "goal_amount",
+  "currency",
+  "column_break_rked",
+  "cost_center",
+  "erp_item",
+  "payment_term",
+  "description_section",
+  "description"
+ ],
+ "fields": [
+  {
+   "bold": 1,
+   "fieldname": "campaign_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Campaign Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Active\nClosed\nDraft",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "fieldname": "goal_section",
+   "fieldtype": "Section Break",
+   "label": "Goal and Financial Settings"
+  },
+  {
+   "fieldname": "goal_amount",
+   "fieldtype": "Currency",
+   "label": "Goal Amount",
+   "options": "currency"
+  },
+  {
+   "default": "USD",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "description_section",
+   "fieldtype": "Section Break",
+   "label": "Description"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "default": "0",
+   "fieldname": "default",
+   "fieldtype": "Check",
+   "label": "Default Campaign"
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_rked",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "erp_item",
+   "fieldtype": "Link",
+   "label": "ERP Item",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "payment_term",
+   "fieldtype": "Link",
+   "label": "Default Payment Term",
+   "options": "Payment Term"
+  },
+  {
+   "fieldname": "donation_via",
+   "fieldtype": "Select",
+   "label": "Donation Via",
+   "options": "Portal\nDirect Payment",
+   "reqd": 1
+  },
+  {
+   "fieldname": "payment_gateway",
+   "fieldtype": "Link",
+   "label": "Payment Gateway",
+   "options": "Payment Gateway"
+  }
+ ],
+ "links": [],
+ "modified": "2026-04-17 11:48:06.375413",
+ "modified_by": "Administrator",
+ "module": "Frappe Giving",
+ "name": "Donation Campaign",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "role": "Accounts Manager",
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "campaign_name",
+ "track_changes": 1
+}

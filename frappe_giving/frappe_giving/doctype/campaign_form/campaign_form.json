@@ -1,0 +1,175 @@
+{
+  "name": "Campaign Form",
+  "doctype": "DocType",
+  "module": "Frappe Giving",
+  "naming_rule": "By fieldname",
+  "autoname": "field:form_title",
+  "title_field": "form_title",
+  "search_fields": "form_title,campaign",
+  "is_submittable": 0,
+  "track_changes": 1,
+  "engine": "InnoDB",
+  "fields": [
+    {
+      "fieldname": "basics_section",
+      "fieldtype": "Section Break",
+      "label": "Basics"
+    },
+    {
+      "fieldname": "form_title",
+      "fieldtype": "Data",
+      "label": "Form Title",
+      "reqd": 1,
+      "unique": 1,
+      "in_list_view": 1,
+      "bold": 1,
+      "description": "Used as the unique identifier and URL slug for this form."
+    },
+    {
+      "fieldname": "campaign",
+      "fieldtype": "Link",
+      "label": "Campaign",
+      "options": "Donation Campaign",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "col_break_basics",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Active\nInactive",
+      "default": "Active",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "presentation_section",
+      "fieldtype": "Section Break",
+      "label": "Presentation"
+    },
+    {
+      "fieldname": "hero_title",
+      "fieldtype": "Data",
+      "label": "Hero Title",
+      "description": "Prominent heading on the public form. Can differ from the campaign name."
+    },
+    {
+      "fieldname": "subtitle",
+      "fieldtype": "Small Text",
+      "label": "Subtitle"
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Text Editor",
+      "label": "Description"
+    },
+    {
+      "fieldname": "col_break_presentation",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "image",
+      "fieldtype": "Attach Image",
+      "label": "Image"
+    },
+    {
+      "fieldname": "cta_label",
+      "fieldtype": "Data",
+      "label": "Call-to-Action Label",
+      "default": "Donate Now"
+    },
+    {
+      "fieldname": "thank_you_message",
+      "fieldtype": "Text Editor",
+      "label": "Thank You Message",
+      "description": "Shown after the donor submits the form."
+    },
+    {
+      "fieldname": "giving_levels_section",
+      "fieldtype": "Section Break",
+      "label": "Giving Levels"
+    },
+    {
+      "fieldname": "giving_levels",
+      "fieldtype": "Table",
+      "label": "Giving Levels",
+      "options": "Campaign Form Giving Level",
+      "description": "Suggested donation amounts shown on the form."
+    },
+    {
+      "fieldname": "field_toggles_section",
+      "fieldtype": "Section Break",
+      "label": "Field Toggles"
+    },
+    {
+      "fieldname": "show_full_name",
+      "fieldtype": "Check",
+      "label": "Show Full Name",
+      "default": 1,
+      "read_only": 1,
+      "description": "Full name is always required. This toggle is locked on."
+    },
+    {
+      "fieldname": "show_email",
+      "fieldtype": "Check",
+      "label": "Show Email",
+      "default": 1,
+      "read_only": 1,
+      "description": "Email is always required. This toggle is locked on."
+    },
+    {
+      "fieldname": "show_phone",
+      "fieldtype": "Check",
+      "label": "Show Phone",
+      "default": 0
+    },
+    {
+      "fieldname": "show_address",
+      "fieldtype": "Check",
+      "label": "Show Address",
+      "default": 0
+    },
+    {
+      "fieldname": "col_break_toggles",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "show_donor_note",
+      "fieldtype": "Check",
+      "label": "Show Donor Note",
+      "default": 0
+    },
+    {
+      "fieldname": "allow_anonymous",
+      "fieldtype": "Check",
+      "label": "Allow Anonymous",
+      "default": 1
+    },
+    {
+      "fieldname": "allow_custom_amount",
+      "fieldtype": "Check",
+      "label": "Allow Custom Amount",
+      "default": 1
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "Accounts Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 0
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+# Internal design notes — working artifacts, not for distribution
+.docs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.env
+
+# Frappe / bench
+frappe_giving/public/frontend/
+frappe_giving/www/donate.html
+
+# Node / Vite
+node_modules/
+frontend/dist/
+.vite/
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
