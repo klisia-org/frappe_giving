@@ -123,6 +123,21 @@
       "description": "Suppress donor name in public-facing reports and acknowledgments."
     },
     {
+      "fieldname": "send_annual_statement",
+      "fieldtype": "Check",
+      "label": "Send Annual Statement",
+      "default": 1,
+      "description": "Automatically email the donor a consolidated yearly statement PDF in early January. Donors can opt out."
+    },
+    {
+      "fieldname": "last_statement_emailed_year",
+      "fieldtype": "Int",
+      "label": "Last Statement Emailed (Year)",
+      "read_only": 1,
+      "no_copy": 1,
+      "description": "Idempotence key for the annual statement batch. Set automatically; clear it if you need to force a re-send for that year."
+    },
+    {
       "fieldname": "payment_platforms_section",
       "fieldtype": "Section Break",
       "label": "Payment Platforms"
@@ -165,6 +180,11 @@
       "submit": 0,
       "cancel": 0,
       "amend": 0
+    },
+    {
+      "role": "Donor",
+      "read": 1,
+      "print": 1
     }
   ]
 }

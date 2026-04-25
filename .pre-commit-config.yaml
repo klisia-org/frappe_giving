@@ -42,6 +42,7 @@ repos:
     rev: v1.5.0
     hooks:
       - id: detect-secrets
+        args: ["--baseline", ".secrets.baseline"]
         exclude: '.history/.*|README.md|frappe_giving/public/frontend/assets/.*'
 
   - repo: local

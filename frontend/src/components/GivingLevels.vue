@@ -1,8 +1,6 @@
 <template>
   <div>
-    <label class="block text-sm font-medium text-gray-700 mb-2">
-      Donation Amount
-    </label>
+    <label class="block text-sm font-medium mb-2">Donation Amount</label>
     <div class="grid grid-cols-3 gap-2">
       <button
         v-for="level in levels"
@@ -11,9 +9,10 @@
         :class="[
           'py-3 px-2 rounded-md border text-center transition-colors',
           isSelected(level.amount)
-            ? 'bg-sky-500 border-sky-500 text-white'
-            : 'bg-white border-gray-300 text-gray-700 hover:border-gray-400',
+            ? 'fg-level-selected'
+            : 'border-gray-300 hover:border-gray-400',
         ]"
+        :style="isSelected(level.amount) ? null : { background: 'var(--fg-bg)' }"
         @click="select(level.amount)"
       >
         <div class="font-semibold">{{ formatAmount(level.amount) }}</div>
@@ -21,8 +20,9 @@
           v-if="level.label"
           :class="[
             'text-xs mt-0.5 leading-tight',
-            isSelected(level.amount) ? 'text-sky-50' : 'text-gray-500',
+            isSelected(level.amount) ? 'fg-level-sub' : '',
           ]"
+          :style="isSelected(level.amount) ? null : { color: 'var(--fg-muted)' }"
         >
           {{ level.label }}
         </div>
@@ -30,11 +30,11 @@
     </div>
 
     <div v-if="allowCustom" class="mt-3">
-      <label class="block text-xs font-medium text-gray-600 mb-1">
+      <label class="block text-xs font-medium mb-1" :style="{ color: 'var(--fg-muted)' }">
         Or enter a custom amount
       </label>
       <div class="relative">
-        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+        <span class="absolute left-3 top-1/2 -translate-y-1/2" :style="{ color: 'var(--fg-muted)' }">
           {{ currencySymbol }}
         </span>
         <input
@@ -42,7 +42,7 @@
           type="number"
           min="1"
           step="0.01"
-          class="w-full pl-8 pr-3 py-2 border border-gray-300 rounded-md text-gray-900 focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+          class="fg-input w-full pl-8 pr-3 py-2 border rounded-md"
           @input="onCustomInput($event.target.value)"
         />
       </div>

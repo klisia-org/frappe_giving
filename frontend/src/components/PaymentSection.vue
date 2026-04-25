@@ -17,7 +17,7 @@
       <button
         type="button"
         :disabled="confirming || !stripeReady"
-        class="w-full py-3 px-4 rounded-md bg-sky-500 text-white font-medium hover:bg-sky-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        class="fg-btn w-full py-3 px-4 rounded-md font-medium"
         @click="handleConfirm"
       >
         {{ confirming ? "Processing…" : ctaLabel }}

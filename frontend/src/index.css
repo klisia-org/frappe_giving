@@ -1,4 +1,75 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-	
+
+/*
+ * Campaign Form theming.
+ *
+ * Colors are set as CSS custom properties on the `.fg-form` root element by
+ * CampaignForm.vue based on the form's `background` and `button_color`
+ * fields (see api/donate.py). Defaults match the historical hardcoded
+ * palette (white card / sky-500 button) so unthemed forms look unchanged.
+ *
+ * Body/button text colors are derived from luminance on the frontend to
+ * stay readable against whatever the author picked, so authors only need
+ * to choose two colors.
+ */
+.fg-form {
+	--fg-bg: #ffffff;
+	--fg-btn: #0ea5e9;
+	--fg-btn-text: #ffffff;
+	--fg-btn-hover: #0284c7;
+	--fg-body: #374151;
+	--fg-muted: #6b7280;
+	--fg-border: #e5e7eb;
+	--fg-input-border: #d1d5db;
+}
+
+.fg-card {
+	background: var(--fg-bg);
+	color: var(--fg-body);
+	border: 1px solid var(--fg-border);
+}
+
+.fg-btn {
+	background: var(--fg-btn);
+	color: var(--fg-btn-text);
+	transition: background-color 150ms ease, filter 150ms ease;
+}
+.fg-btn:hover:not(:disabled) {
+	background: var(--fg-btn-hover);
+}
+.fg-btn:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.fg-level-selected {
+	background: var(--fg-btn);
+	border-color: var(--fg-btn);
+	color: var(--fg-btn-text);
+}
+.fg-level-selected .fg-level-sub {
+	color: var(--fg-btn-text);
+	opacity: 0.75;
+}
+
+.fg-link {
+	color: var(--fg-btn);
+}
+.fg-link:hover {
+	color: var(--fg-btn-hover);
+}
+
+.fg-input {
+	border-color: var(--fg-input-border);
+}
+.fg-input:focus {
+	outline: none;
+	border-color: var(--fg-btn);
+	box-shadow: 0 0 0 2px color-mix(in srgb, var(--fg-btn) 40%, transparent);
+}
+
+.fg-check {
+	accent-color: var(--fg-btn);
+}
