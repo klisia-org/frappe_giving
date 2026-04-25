@@ -1,7 +1,7 @@
 {
  "app": "frappe_giving",
  "charts": [],
- "content": "[{\"id\":\"fg_header_1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Donor Management</span>\",\"col\":12}},{\"id\":\"fg_card_donors\",\"type\":\"card\",\"data\":{\"card_name\":\"Donors\",\"col\":4}},{\"id\":\"fg_card_donations\",\"type\":\"card\",\"data\":{\"card_name\":\"Donations\",\"col\":4}},{\"id\":\"fg_card_campaigns\",\"type\":\"card\",\"data\":{\"card_name\":\"Campaigns\",\"col\":4}},{\"id\":\"fg_spacer_1\",\"type\":\"spacer\",\"data\":{\"col\":12}}]",
+ "content": "[{\"id\":\"fg_header_1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Donor Management</span>\",\"col\":12}},{\"id\":\"fg_card_donors\",\"type\":\"card\",\"data\":{\"card_name\":\"Donors\",\"col\":4}},{\"id\":\"fg_card_donations\",\"type\":\"card\",\"data\":{\"card_name\":\"Donations\",\"col\":4}},{\"id\":\"fg_card_campaigns\",\"type\":\"card\",\"data\":{\"card_name\":\"Campaigns\",\"col\":4}},{\"id\":\"fg_spacer_1\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"AgiFQ0SOOC\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":4}}]",
  "creation": "2026-04-09 15:00:00",
  "custom_blocks": [],
  "docstatus": 0,
@@ -36,35 +36,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Donations",
-   "link_count": 2,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Donation",
-   "link_count": 0,
-   "link_to": "Donation",
-   "link_type": "DocType",
-   "onboard": 1,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Donation Campaign",
-   "link_count": 0,
-   "link_to": "Donation Campaign",
-   "link_type": "DocType",
-   "onboard": 1,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Campaigns",
    "link_count": 2,
    "link_type": "DocType",
@@ -90,9 +61,97 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Donations",
+   "link_count": 4,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Donation",
+   "link_count": 0,
+   "link_to": "Donation",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sales Invoices",
+   "link_count": 0,
+   "link_to": "Sales Invoice",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Direct Subscription",
+   "link_count": 0,
+   "link_to": "Subscription",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Donation Payment",
+   "link_count": 0,
+   "link_to": "Donation Payment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Settings",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Giving Settings",
+   "link_count": 0,
+   "link_to": "Frappe Giving Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Payment Gateways",
+   "link_count": 0,
+   "link_to": "Payment Gateway",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cost Center",
+   "link_count": 0,
+   "link_to": "Cost Center",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2026-04-24 11:24:17.667123",
+ "modified": "2026-04-24 16:55:02.320231",
  "modified_by": "Administrator",
  "module": "Frappe Giving",
  "name": "Frappe Giving",

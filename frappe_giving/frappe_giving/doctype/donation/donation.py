@@ -9,6 +9,13 @@ class Donation(Document):
 		self._compute_amount_usd()
 
 	def on_submit(self):
+		# Non-Stripe recurring: hand scheduling off to ERPNext Subscription.
+		# No immediate SI — the subscription's scheduler owns cadence.
+		if self.frequency != "One-Time" and self.donation_via == "Direct Payment":
+			self._create_erpnext_subscription()
+			self._set_status("Invoiced")
+			return
+
 		si = self._create_sales_invoice()
 		if self.donation_via == "Portal":
 			self._create_donation_payment(si.name, si.posting_date)
@@ -78,6 +85,7 @@ class Donation(Document):
 			]
 
 		si = frappe.get_doc(si_dict)
+		si.flags.ignore_permissions = True
 		si.insert(ignore_permissions=True)
 		si.submit()
 
@@ -125,13 +133,173 @@ class Donation(Document):
 		si = self._create_sales_invoice(
 			amount=amount, posting_date=date, persist_link=False
 		)
-		return self._create_donation_payment(
+		dp = self._create_donation_payment(
 			si_name=si.name,
 			invoice_date=si.posting_date,
 			amount=amount,
 			status="Succeeded",
 			stripe_pi_id=stripe_pi_id,
 		)
+		self._reconcile_sales_invoice(si.name, amount, stripe_pi_id, date)
+		return dp
+
+	def _reconcile_sales_invoice(self, si_name, amount, stripe_pi_id, posting_date=None):
+		"""Create and submit a Payment Entry that marks the SI as Paid.
+
+		Uses the Payment Gateway Account configured for Stripe. The Payment
+		Entry debits the gateway clearing account and credits AR, matching
+		the Sales Invoice. Actual bank deposit (net of fees) is reconciled
+		later via ERPNext's Bank Reconciliation.
+
+		Failures write to the Error Log instead of being silently swallowed —
+		this runs in webhook and sync-confirm contexts where no operator is
+		watching for msgprint alerts.
+		"""
+		from erpnext.accounts.doctype.payment_entry.payment_entry import (
+			get_payment_entry,
+		)
+
+		# Find any Payment Gateway Account whose Payment Gateway uses
+		# Stripe Settings. Sites often have multiple Payment Gateway records
+		# pointing at the same Stripe account, and we don't want to pin on
+		# one specific name — any matching PGA is the correct clearing target.
+		stripe_gateways = frappe.get_all(
+			"Payment Gateway",
+			filters={"gateway_settings": "Stripe Settings"},
+			pluck="name",
+		)
+
+		clearing_account = None
+		if stripe_gateways:
+			clearing_account = frappe.db.get_value(
+				"Payment Gateway Account",
+				{
+					"payment_gateway": ("in", stripe_gateways),
+					"company": self.company,
+				},
+				"payment_account",
+			) or frappe.db.get_value(
+				"Payment Gateway Account",
+				{"payment_gateway": ("in", stripe_gateways)},
+				"payment_account",
+			)
+
+		if not clearing_account:
+			frappe.log_error(
+				title="Donation reconcile: no Payment Gateway Account",
+				message=(
+					f"Donation: {self.name}\n"
+					f"Sales Invoice: {si_name}\n"
+					f"Company: {self.company}\n"
+					f"Stripe gateways on site: {stripe_gateways}\n"
+					"Fix: create a Payment Gateway Account at "
+					"/app/payment-gateway-account pointing at one of the "
+					"gateways above."
+				),
+			)
+			return None
+
+		posting_date = posting_date or nowdate()
+		pe = get_payment_entry(
+			"Sales Invoice", si_name, bank_account=clearing_account
+		)
+		pe.posting_date = posting_date
+		pe.reference_no = stripe_pi_id or si_name
+		pe.reference_date = posting_date
+		pe.paid_amount = amount
+		pe.received_amount = amount
+		pe.flags.ignore_permissions = True
+		pe.insert(ignore_permissions=True)
+		pe.submit()
+
+		return pe
+
+	def _create_erpnext_subscription(self):
+		"""Create an ERPNext Subscription for a non-Stripe recurring donation.
+
+		The Subscription's daily scheduler generates (and auto-submits) a
+		Sales Invoice each cycle. Our Sales Invoice `on_submit` hook then
+		creates the paired Donation Payment (status Waiting) and the Payment
+		Entry hook flips it to Succeeded when staff reconciles the check.
+		"""
+		donor = frappe.get_doc("Donor", self.donor)
+		if not donor.customer:
+			frappe.throw(
+				_(
+					"Donor {0} has no linked Customer; cannot create an "
+					"ERPNext Subscription."
+				).format(self.donor)
+			)
+
+		campaign = frappe.get_doc("Donation Campaign", self.campaign)
+		plan_name = self._ensure_subscription_plan(campaign)
+
+		sub = frappe.get_doc(
+			{
+				"doctype": "Subscription",
+				"party_type": "Customer",
+				"party": donor.customer,
+				"company": self.company,
+				"cost_center": campaign.cost_center,
+				"start_date": self.donation_date or nowdate(),
+				"submit_invoice": 1,
+				"generate_invoice_at": "Beginning of the current subscription period",
+				"plans": [{"plan": plan_name, "qty": 1}],
+			}
+		)
+		sub.flags.ignore_permissions = True
+		sub.insert(ignore_permissions=True)
+		sub.submit()
+
+		self.db_set("erpnext_subscription", sub.name, update_modified=False)
+
+		frappe.msgprint(
+			_("ERPNext Subscription {0} created for recurring donation").format(
+				sub.name
+			),
+			alert=True,
+		)
+		return sub
+
+	def _ensure_subscription_plan(self, campaign):
+		"""Return the name of the Subscription Plan for this (campaign, frequency,
+		amount) combo, creating it lazily if needed.
+
+		Plan naming is deterministic so repeat donors at the same level reuse
+		a single Subscription Plan record.
+		"""
+		plan_name = f"{self.campaign}-{self.frequency}-{self.amount:.2f}"
+		if frappe.db.exists("Subscription Plan", plan_name):
+			return plan_name
+
+		interval_map = {
+			"Monthly": ("Month", 1),
+			"Quarterly": ("Month", 3),
+			"Annual": ("Year", 1),
+		}
+		interval, count = interval_map.get(self.frequency, (None, None))
+		if not interval:
+			frappe.throw(
+				_("Frequency {0} is not supported for recurring subscriptions.").format(
+					self.frequency
+				)
+			)
+
+		plan = frappe.get_doc(
+			{
+				"doctype": "Subscription Plan",
+				"plan_name": plan_name,
+				"item": campaign.erp_item,
+				"currency": self.currency or "USD",
+				"price_determination": "Fixed Rate",
+				"cost": self.amount,
+				"billing_interval": interval,
+				"billing_interval_count": count,
+				"cost_center": campaign.cost_center,
+			}
+		)
+		plan.insert(ignore_permissions=True)
+		return plan.name
 
 	def _set_status(self, status):
 		frappe.db.set_value("Donation", self.name, "status", status)

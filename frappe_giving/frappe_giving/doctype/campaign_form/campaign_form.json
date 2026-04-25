@@ -154,6 +154,20 @@
       "fieldtype": "Check",
       "label": "Allow Custom Amount",
       "default": 1
+    },
+    {
+      "fieldname": "integrations_section",
+      "fieldtype": "Section Break",
+      "label": "Integrations",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "stripe_product_id",
+      "fieldtype": "Data",
+      "label": "Stripe Product ID",
+      "read_only": 1,
+      "no_copy": 1,
+      "description": "Auto-populated on the first recurring subscription for this form. Reused for subsequent subscriptions to avoid duplicate Products in the Stripe Dashboard. Clear this field to force a fresh Product on next use."
     }
   ],
   "permissions": [

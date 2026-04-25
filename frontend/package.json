@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/assets/frappe_giving/frontend/ && yarn copy-html-entry",
+    "build": "yarn build:app && yarn build:widget",
+    "build:app": "vite build --base=/assets/frappe_giving/frontend/ && yarn copy-html-entry",
+    "build:widget": "vite build --config vite.config.widget.js",
     "preview": "vite preview",
     "copy-html-entry": "cp ../frappe_giving/public/frontend/index.html ../frappe_giving/www/donate.html"
   },

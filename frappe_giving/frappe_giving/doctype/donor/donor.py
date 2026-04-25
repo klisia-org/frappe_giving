@@ -26,8 +26,7 @@ class Donor(Document):
 			)
 			user.insert(ignore_permissions=True)
 
-		frappe.db.set_value("Donor", self.name, "user", user.name)
-		self.user = user.name
+		self.db_set("user", user.name, update_modified=False)
 		frappe.msgprint(
 			_("User {0} linked to Donor").format(user.name), alert=True
 		)
@@ -56,8 +55,7 @@ class Donor(Document):
 		)
 		customer.insert(ignore_permissions=True)
 
-		frappe.db.set_value("Donor", self.name, "customer", customer.name)
-		self.customer = customer.name
+		self.db_set("customer", customer.name, update_modified=False)
 		frappe.msgprint(
 			_("Customer {0} created and linked to Donor").format(customer.name),
 			alert=True,
@@ -83,8 +81,7 @@ class Donor(Document):
 		)
 		contact.insert(ignore_permissions=True)
 
-		frappe.db.set_value("Donor", self.name, "contact", contact.name)
-		self.contact = contact.name
+		self.db_set("contact", contact.name, update_modified=False)
 		frappe.msgprint(
 			_("Contact {0} created and linked to Donor and Customer").format(
 				contact.name

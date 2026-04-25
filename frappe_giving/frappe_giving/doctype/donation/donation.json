@@ -20,6 +20,7 @@
   "gate_subscription_id",
   "column_break_dkqd",
   "subscription_status",
+  "erpnext_subscription",
   "manual_section",
   "donation_date",
   "currency",
@@ -265,6 +266,15 @@
   {
    "fieldname": "column_break_axcq",
    "fieldtype": "Column Break"
+  },
+  {
+   "description": "ERPNext Subscription that generates Sales Invoices on cadence for Direct Payment recurring donations (mailed checks, ACH outside Stripe).",
+   "fieldname": "erpnext_subscription",
+   "fieldtype": "Link",
+   "label": "ERPNext Subscription",
+   "no_copy": 1,
+   "options": "Subscription",
+   "read_only": 1
   }
  ],
  "is_submittable": 1,

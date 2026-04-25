@@ -87,7 +87,7 @@ export default {
       this.errorMessage = null;
       this.confirming = true;
       try {
-        const { error } = await this.stripe.confirmPayment({
+        const { error, paymentIntent } = await this.stripe.confirmPayment({
           elements: this.elements,
           redirect: "if_required",
         });
@@ -95,7 +95,7 @@ export default {
           this.errorMessage = error.message || "Payment could not be completed.";
           this.$emit("failed", error);
         } else {
-          this.$emit("paid");
+          this.$emit("paid", paymentIntent);
         }
       } catch (e) {
         this.errorMessage = e?.message || "Unexpected error during payment.";

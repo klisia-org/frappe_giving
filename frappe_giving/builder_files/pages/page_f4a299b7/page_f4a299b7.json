@@ -254,39 +254,6 @@
              "tabletStyles": {
               "padding": "10px"
              }
-            },
-            {
-             "activeState": null,
-             "attributes": {
-              "href": "/pricing"
-             },
-             "baseStyles": {
-              "fontSize": "16px",
-              "height": "fit-content",
-              "lineHeight": "1.4",
-              "minWidth": "10px",
-              "paddingBottom": "10px",
-              "paddingLeft": "12px",
-              "paddingRight": "12px",
-              "paddingTop": "10px",
-              "width": "fit-content"
-             },
-             "blockClientScript": "",
-             "blockDataScript": "",
-             "blockId": "0y1qupvtq",
-             "children": [],
-             "classes": [],
-             "customAttributes": {},
-             "dataKey": null,
-             "dynamicValues": [],
-             "element": "a",
-             "innerHTML": "<p>Pricing</p>",
-             "mobileStyles": {},
-             "props": {},
-             "rawStyles": {},
-             "tabletStyles": {
-              "padding": "10px"
-             }
             }
            ],
            "classes": [],
@@ -585,73 +552,6 @@
        "children": [
         {
          "activeState": null,
-         "attributes": {
-          "href": "/whats-new"
-         },
-         "baseStyles": {
-          "alignItems": "center",
-          "borderColor": "#EDEDED",
-          "borderRadius": "100px",
-          "borderStyle": "solid",
-          "borderWidth": "1px",
-          "display": "flex",
-          "flexDirection": "column",
-          "flexShrink": 0,
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": "4.5px",
-          "paddingLeft": "8px",
-          "paddingRight": "8px",
-          "paddingTop": "4.5px",
-          "position": "static"
-         },
-         "blockClientScript": "",
-         "blockDataScript": "",
-         "blockId": "zz3mdalyd",
-         "blockName": "whats-new",
-         "children": [
-          {
-           "activeState": null,
-           "attributes": {},
-           "baseStyles": {
-            "color": "var(--text-icons-gray-6, #525252)",
-            "fontFamily": "",
-            "fontSize": "13px",
-            "fontWeight": "400",
-            "height": "fit-content",
-            "letterSpacing": "0.065px",
-            "lineHeight": "115%",
-            "minWidth": "10px",
-            "width": "fit-content"
-           },
-           "blockClientScript": "",
-           "blockDataScript": "",
-           "blockId": "7tqga1m1t",
-           "children": [],
-           "classes": [],
-           "customAttributes": {},
-           "dataKey": null,
-           "dynamicValues": [],
-           "element": "p",
-           "innerHTML": "<p>What’s new</p>",
-           "mobileStyles": {},
-           "props": {},
-           "rawStyles": {},
-           "tabletStyles": {}
-          }
-         ],
-         "classes": [],
-         "customAttributes": {},
-         "dataKey": null,
-         "dynamicValues": [],
-         "element": "a",
-         "mobileStyles": {},
-         "props": {},
-         "rawStyles": {},
-         "tabletStyles": {}
-        },
-        {
-         "activeState": null,
          "attributes": {},
          "baseStyles": {
           "color": "#171717",
@@ -938,7 +838,7 @@
       "flexDirection": "row",
       "flexShrink": 0,
       "gap": "20px",
-      "height": "600px",
+      "height": "798px",
       "overflow": "hidden",
       "position": "static",
       "width": "100%"
@@ -1107,13 +1007,13 @@
  "idx": 0,
  "is_standard": 1,
  "is_template": 0,
- "modified": "2026-04-09 15:59:43.147356",
+ "modified": "2026-04-24 17:50:17.964349",
  "modified_by": "Administrator",
  "name": "page-f4a299b7",
  "owner": "Administrator",
  "page_name": "page-f4a299b7",
  "page_title": "home",
- "preview": "/files/page-f4a299b7-preview.webp?v=e05e0",
+ "preview": "/files/page-f4a299b7-preview.webp?v=bd18a",
  "project_folder": "frappe_giving",
  "published": 1,
  "route": "pages/home"

@@ -133,13 +133,14 @@ add_to_apps_screen = [
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Sales Invoice": {
+		"on_submit": "frappe_giving.signals.sales_invoice.on_submit",
+	},
+	"Payment Entry": {
+		"on_submit": "frappe_giving.signals.payment_entry.on_submit",
+	},
+}
 
 # Scheduled Tasks
 # ---------------
@@ -253,6 +254,10 @@ add_to_apps_screen = [
 
 
 website_route_rules = [
-	{"from_route": "/donate/<path:app_path>", "to_route": "donate"},
+	# Single-segment match only — `/donate/<form_name>` routes to our
+	# SPA; deeper paths like `/donate/pages/<builder-slug>` fall through
+	# to Frappe's regular routing so Builder pages under /donate/* still
+	# resolve correctly.
+	{"from_route": "/donate/<form_name>", "to_route": "donate"},
 	{"from_route": "/donate", "to_route": "donate"},
 ]

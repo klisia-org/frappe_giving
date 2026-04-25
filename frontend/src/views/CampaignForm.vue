@@ -20,9 +20,25 @@
           class="prose prose-sm max-w-none text-gray-700"
           v-html="form.thank_you_message || defaultThanks"
         />
+        <div
+          v-if="finalizationError"
+          class="mt-6 rounded-md bg-amber-50 border border-amber-200 p-3 text-sm text-amber-800"
+        >
+          <p class="font-medium">Note</p>
+          <p class="mt-1">{{ finalizationError }}</p>
+        </div>
         <p class="mt-6 text-sm text-gray-500">
           Reference: <span class="font-mono">{{ donationName }}</span>
         </p>
+        <a
+          v-if="receiptUrl"
+          :href="receiptUrl"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center mt-3 text-sm font-medium text-sky-600 hover:text-sky-700"
+        >
+          Print your receipt →
+        </a>
       </div>
 
       <div
@@ -167,6 +183,8 @@ export default {
       initiating: false,
       submitError: null,
       donationName: null,
+      receiptUrl: null,
+      finalizationError: null,
       clientSecret: null,
       publishableKey: null,
       paymentMode: null,
@@ -245,8 +263,28 @@ export default {
         this.initiating = false;
       }
     },
-    handlePaid() {
-      this.step = "thanks";
+    async handlePaid(paymentIntent) {
+      try {
+        const res = await this.$call(
+          "frappe_giving.api.stripe.confirm_donation_payment",
+          {
+            donation_name: this.donationName,
+            payment_intent_id: paymentIntent.id,
+          }
+        );
+        this.receiptUrl = res?.receipt_url || null;
+        this.step = "thanks";
+      } catch (e) {
+        // Payment succeeded on Stripe but server-side finalization failed.
+        // Surface the error so staff can investigate; the webhook is still
+        // the safety net, but the donor should know there's a hiccup.
+        this.step = "thanks";
+        this.submitError = null;
+        console.error("Sync confirm failed:", e);
+        this.finalizationError =
+          e?.message ||
+          "Your payment was received, but we couldn't finalize the receipt automatically. Our team will follow up.";
+      }
     },
     handlePaymentFailed() {
       // Error is shown inside PaymentSection; stay on payment step for retry.

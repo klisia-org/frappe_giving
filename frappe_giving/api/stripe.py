@@ -86,6 +86,7 @@ def initiate_stripe_payment(form_name, amount, frequency, donor_data):
 		donation_name=donation.name,
 		frequency=frequency,
 		description=description,
+		campaign_form_name=form.name,
 	)
 
 	frappe.db.set_value(
@@ -108,6 +109,55 @@ def initiate_stripe_payment(form_name, amount, frequency, donor_data):
 		"subscription_id": sub.id,
 		"client_secret": payment_intent.client_secret,
 		"publishable_key": stripe_helpers.get_publishable_key(),
+	}
+
+
+@frappe.whitelist(allow_guest=True, methods=["POST"])
+def confirm_donation_payment(donation_name, payment_intent_id):
+	"""Synchronous confirmation after the donor's browser completes payment.
+
+	The frontend calls this immediately after `stripe.confirmPayment` resolves
+	successfully. We retrieve the PaymentIntent from Stripe to verify it
+	really succeeded (never trust the client) and that its metadata matches
+	the Donation, then submit the Donation. This keeps the happy path fast
+	and independent of webhook delivery. The webhook handler remains as a
+	safety net (idempotent via `stripe_payment_intent_id` lookup) and is
+	required for subscription renewals and Dashboard-initiated refunds.
+
+	NOTE: we deliberately DON'T do an upfront `frappe.db.exists("Donation",
+	...)` check here — that would snapshot the Donation row into the
+	transaction before the handler's FOR UPDATE lock fires, causing
+	InnoDB error 1020 under concurrent webhook + sync-confirm runs. The
+	handler's `frappe.get_doc(..., for_update=True)` raises
+	DoesNotExistError naturally if the donation is missing.
+	"""
+	client = stripe_helpers.get_stripe_client()
+	pi = client.PaymentIntent.retrieve(payment_intent_id)
+
+	metadata_donation = (pi.get("metadata") or {}).get("donation_name")
+	if metadata_donation != donation_name:
+		frappe.throw(
+			_("Payment Intent does not belong to this donation."),
+			frappe.PermissionError,
+		)
+
+	if pi["status"] != "succeeded":
+		frappe.throw(
+			_("Payment has not yet succeeded. Stripe status: {0}").format(pi["status"])
+		)
+
+	# Trusted: PI belongs to this donation and Stripe confirms success.
+	# Permission bypass is applied at the specific-doc level inside the
+	# handler (not globally) — narrower grant, honest audit trail (Guest,
+	# not Administrator), no other Administrator privileges granted.
+	_handle_payment_intent_succeeded(pi)
+
+	from frappe_giving.api.receipts import get_receipt_url
+
+	return {
+		"donation": donation_name,
+		"status": frappe.db.get_value("Donation", donation_name, "status"),
+		"receipt_url": get_receipt_url(donation_name),
 	}
 
 
@@ -142,6 +192,9 @@ def webhook():
 		# Unhandled but valid event — acknowledge so Stripe stops retrying.
 		return {"ok": True, "ignored": event["type"]}
 
+	# Signature is verified. Permission bypass is applied per-doc inside
+	# the individual handlers, not globally — narrower grant, audit trail
+	# stays honest (Guest, not Administrator).
 	try:
 		handler(event["data"]["object"])
 	except Exception:
@@ -161,22 +214,50 @@ def webhook():
 
 def _handle_payment_intent_succeeded(pi):
 	donation_name = (pi.get("metadata") or {}).get("donation_name")
-	if not donation_name or not frappe.db.exists("Donation", donation_name):
+	if not donation_name:
 		return
 
 	pi_id = pi["id"]
 
-	# Idempotence: if we already recorded a Donation Payment for this PI, stop.
-	if frappe.db.exists("Donation Payment", {"stripe_payment_intent_id": pi_id}):
+	# CRITICAL: reset the transaction snapshot before the FOR UPDATE.
+	#
+	# Both callers (sync-confirm and the webhook) have already done
+	# read-only DB work — `stripe_helpers.get_stripe_client()` reads
+	# Stripe Settings + Frappe Giving Settings, which under MariaDB's
+	# REPEATABLE READ isolation establishes the transaction snapshot.
+	# When the racing transaction has already modified `tabDonation`,
+	# our FOR UPDATE then raises error 1020 ("Record has changed since
+	# last read") instead of blocking on the lock.
+	#
+	# Committing here ends the read-only transaction; the next query
+	# starts a fresh transaction whose snapshot includes the racing
+	# transaction's commits. The FOR UPDATE then either acquires the
+	# lock cleanly, or — if the racing transaction is still in progress
+	# — blocks until it commits. Either way, the idempotence check
+	# below catches the duplicate.
+	frappe.db.commit()
+
+	try:
+		donation = frappe.get_doc("Donation", donation_name, for_update=True)
+	except frappe.DoesNotExistError:
 		return
 
-	donation = frappe.get_doc("Donation", donation_name)
+	# Idempotence: check AFTER acquiring the lock so we see the winning
+	# transaction's writes.
+	if frappe.db.exists("Donation Payment", {"stripe_payment_intent_id": pi_id}):
+		return
 
 	if donation.docstatus == 0:
 		# First successful charge — submit the donation.
 		# donation.on_submit creates a Sales Invoice and, for Portal donations,
-		# an initial Donation Payment row.
-		donation.submit()
+		# an initial Donation Payment row. We bypass the whitelisted `.submit()`
+		# wrapper by flipping docstatus and saving with `ignore_permissions=True`
+		# directly — this is what the webhook and sync-confirm Guest paths need,
+		# since `.submit()` doesn't accept an `ignore_permissions` kwarg and
+		# setting `self.flags.ignore_permissions` alone has proven unreliable
+		# across the whitelist-wrapped call chain in this Frappe build.
+		donation.docstatus = 1
+		donation.save(ignore_permissions=True)
 
 	# Find or create the Donation Payment for this PI.
 	dp_name = frappe.db.get_value(
@@ -191,6 +272,14 @@ def _handle_payment_intent_succeeded(pi):
 		dp.status = "Succeeded"
 		dp.date = frappe.utils.nowdate()
 		dp.save(ignore_permissions=True)
+
+		# Reconcile the SI so it's not stuck Unpaid.
+		donation.reload()
+		donation._reconcile_sales_invoice(
+			si_name=dp.sales_invoice,
+			amount=float(pi["amount"]) / 100,
+			stripe_pi_id=pi_id,
+		)
 	else:
 		# Subscription renewal: no pre-existing DP row, create one.
 		donation.reload()
