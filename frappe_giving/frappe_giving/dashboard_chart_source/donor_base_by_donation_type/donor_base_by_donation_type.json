@@ -1,0 +1,13 @@
+{
+ "creation": "2026-05-06 12:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Dashboard Chart Source",
+ "idx": 0,
+ "modified": "2026-05-06 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Frappe Giving",
+ "name": "Donor Base by Donation Type",
+ "owner": "Administrator",
+ "source_name": "Donor Base by Donation Type",
+ "timeseries": 0
+}

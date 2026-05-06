@@ -1,0 +1,38 @@
+{
+ "chart_name": "Donor Base",
+ "chart_type": "Custom",
+ "creation": "2026-05-06 12:00:00",
+ "custom_options": "{\"type\": \"donut\", \"colors\": [\"#5e64ff\", \"#28a745\"]}",
+ "docstatus": 0,
+ "doctype": "Dashboard Chart",
+ "filters_json": "{}",
+ "idx": 0,
+ "is_public": 1,
+ "is_standard": 1,
+ "modified": "2026-05-06 11:27:31.716721",
+ "modified_by": "Administrator",
+ "module": "Frappe Giving",
+ "name": "Donor Base",
+ "number_of_groups": 0,
+ "owner": "Administrator",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Administrator"
+  },
+  {
+   "role": "Academics User"
+  }
+ ],
+ "show_values_over_chart": 0,
+ "source": "Donor Base by Donation Type",
+ "timeseries": 0,
+ "type": "Donut",
+ "use_report_chart": 0,
+ "y_axis": []
+}
