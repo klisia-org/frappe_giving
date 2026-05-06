@@ -1,0 +1,26 @@
+[
+  {
+    "doctype": "Email Template",
+    "name": "frappe_giving_first_donation",
+    "subject": "Welcome to {{ company_name }} — receipt for your first donation",
+    "use_html": 1,
+    "response": "<p>Hi {{ donor_name }},</p>\n<p>Thank you for your first donation to <strong>{{ company_name }}</strong>. Your support of <em>{{ campaign_name }}</em> makes a real difference.</p>\n<p><strong>Donation summary</strong></p>\n<ul>\n  <li>Amount: {{ frappe.utils.fmt_money(donation_amount, currency=donation_currency) }}</li>\n  <li>Date: {{ frappe.utils.format_date(donation_date) }}</li>\n  <li>Reference: {{ donation_name }}</li>\n</ul>\n<p>You can <a href=\"{{ receipt_url }}\">download your tax-deductible receipt</a> as a PDF.</p>\n<hr/>\n<p><strong>Your donor portal</strong></p>\n<p>We&rsquo;ve created a donor portal account for you so you can view your donation history and download receipts anytime. Sign in with this email: <strong>{{ login_email }}</strong>.</p>\n{% if account_setup_url %}\n<p><a href=\"{{ account_setup_url }}\">Click here to set up your password</a> (this link is single-use and expires).</p>\n{% endif %}\n<p>Once you&rsquo;ve set a password, you can sign in at <a href=\"{{ portal_url }}\">{{ portal_url }}</a> any time.</p>\n<p>With gratitude,<br/>The {{ company_name }} team</p>",
+    "owner": "Administrator"
+  },
+  {
+    "doctype": "Email Template",
+    "name": "frappe_giving_thank_you",
+    "subject": "Thank you for your donation to {{ company_name }}",
+    "use_html": 1,
+    "response": "<p>Hi {{ donor_name }},</p>\n<p>Thank you for your continued support of <strong>{{ company_name }}</strong>. Your donation to <em>{{ campaign_name }}</em> has been received.</p>\n<p><strong>Donation summary</strong></p>\n<ul>\n  <li>Amount: {{ frappe.utils.fmt_money(donation_amount, currency=donation_currency) }}</li>\n  <li>Date: {{ frappe.utils.format_date(donation_date) }}</li>\n  <li>Reference: {{ donation_name }}</li>\n</ul>\n<p><a href=\"{{ receipt_url }}\">Download your receipt</a> &middot; <a href=\"{{ portal_url }}\">View your donation history</a></p>\n<p>With gratitude,<br/>The {{ company_name }} team</p>",
+    "owner": "Administrator"
+  },
+  {
+    "doctype": "Email Template",
+    "name": "frappe_giving_annual_statement",
+    "subject": "Your {{ year }} donation statement from {{ company_name }}",
+    "use_html": 1,
+    "response": "<p>Hi {{ donor_name }},</p>\n<p>Thank you for your support of <strong>{{ company_name }}</strong> in {{ year }}. Your consolidated donation statement for the year is attached as a PDF &mdash; please keep it for your tax records.</p>\n<p>You can also access this and previous years&rsquo; statements anytime through <a href=\"{{ portal_url }}\">your donor portal</a>.</p>\n<p>With gratitude,<br/>The {{ company_name }} team</p>",
+    "owner": "Administrator"
+  }
+]

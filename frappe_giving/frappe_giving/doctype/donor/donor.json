@@ -1,190 +1,226 @@
 {
-  "name": "Donor",
-  "doctype": "DocType",
-  "module": "Frappe Giving",
-  "naming_rule": "Expression",
-  "autoname": "DNR-.YYYY.-.#####",
-  "title_field": "donor_name",
-  "search_fields": "donor_name,email",
-  "is_submittable": 0,
-  "track_changes": 1,
-  "track_views": 0,
-  "engine": "InnoDB",
-  "fields": [
-    {
-      "fieldname": "identity_section",
-      "fieldtype": "Section Break",
-      "label": "Identity"
-    },
-    {
-      "fieldname": "user",
-      "fieldtype": "Link",
-      "label": "User",
-      "options": "User",
-      "reqd": 0,
-      "description": "Frappe website user \u2013 required for portal access. Created automatically on first donation if donor registers."
-    },
-    {
-      "fieldname": "col_break_identity",
-      "fieldtype": "Column Break"
-    },
-    {
-      "fieldname": "contact",
-      "fieldtype": "Link",
-      "label": "Contact",
-      "options": "Contact",
-      "reqd": 0,
-      "description": "CRM Contact record \u2013 the identity anchor across all Frappe apps."
-    },
-    {
-      "fieldname": "customer",
-      "fieldtype": "Link",
-      "label": "Customer",
-      "options": "Customer",
-      "reqd": 0,
-      "description": "ERPNext Customer record \u2013 required for Sales Invoice generation."
-    },
-    {
-      "fieldname": "donor_details_section",
-      "fieldtype": "Section Break",
-      "label": "Donor Details"
-    },
-    {
-      "fieldname": "donor_name",
-      "fieldtype": "Data",
-      "label": "Donor Name",
-      "reqd": 1,
-      "fetch_from": "contact.full_name",
-      "fetch_if_empty": 1,
-      "in_list_view": 1,
-      "bold": 1
-    },
-    {
-      "fieldname": "email",
-      "fieldtype": "Data",
-      "label": "Email",
-      "options": "Email",
-      "reqd": 1,
-      "fetch_from": "contact.email_id",
-      "fetch_if_empty": 1,
-      "in_list_view": 1
-    },
-    {
-      "fieldname": "alternate_email",
-      "fieldtype": "Data",
-      "label": "Alternate Email",
-      "options": "Email",
-      "description": "Previous or secondary email address. Useful when a donor changes email."
-    },
-    {
-      "fieldname": "col_break_details",
-      "fieldtype": "Column Break"
-    },
-    {
-      "fieldname": "donor_type",
-      "fieldtype": "Select",
-      "label": "Donor Type",
-      "options": "Individual\nOrganization\nChurch\nFoundation",
-      "default": "Individual",
-      "reqd": 1,
-      "in_list_view": 1
-    },
-    {
-      "fieldname": "status",
-      "fieldtype": "Select",
-      "label": "Status",
-      "options": "Active\nLapsed\nInactive",
-      "default": "Active",
-      "reqd": 1,
-      "in_list_view": 1
-    },
-    {
-      "fieldname": "donor_since",
-      "fieldtype": "Date",
-      "label": "Donor Since"
-    },
-    {
-      "fieldname": "preferred_communication",
-      "fieldtype": "Select",
-      "label": "Preferred Communication",
-      "options": "\nEmail\nPhone\nWhatsApp\nPost",
-      "default": "Email"
-    },
-    {
-      "fieldname": "flags_section",
-      "fieldtype": "Section Break",
-      "label": "Flags"
-    },
-    {
-      "fieldname": "is_anonymous",
-      "fieldtype": "Check",
-      "label": "Anonymous Donor",
-      "default": 0,
-      "description": "Suppress donor name in public-facing reports and acknowledgments."
-    },
-    {
-      "fieldname": "send_annual_statement",
-      "fieldtype": "Check",
-      "label": "Send Annual Statement",
-      "default": 1,
-      "description": "Automatically email the donor a consolidated yearly statement PDF in early January. Donors can opt out."
-    },
-    {
-      "fieldname": "last_statement_emailed_year",
-      "fieldtype": "Int",
-      "label": "Last Statement Emailed (Year)",
-      "read_only": 1,
-      "no_copy": 1,
-      "description": "Idempotence key for the annual statement batch. Set automatically; clear it if you need to force a re-send for that year."
-    },
-    {
-      "fieldname": "payment_platforms_section",
-      "fieldtype": "Section Break",
-      "label": "Payment Platforms"
-    },
-    {
-      "fieldname": "payment_platforms",
-      "fieldtype": "Table",
-      "label": "Payment Platforms",
-      "options": "Donor Payment Platform",
-      "description": "Gateway-specific customer identifiers. Supports multiple gateways (Stripe, PayPal, etc.) without schema changes."
-    },
-    {
-      "fieldname": "notes_section",
-      "fieldtype": "Section Break",
-      "label": "Notes"
-    },
-    {
-      "fieldname": "notes",
-      "fieldtype": "Small Text",
-      "label": "Notes"
-    }
-  ],
-  "permissions": [
-    {
-      "role": "System Manager",
-      "read": 1,
-      "write": 1,
-      "create": 1,
-      "delete": 1,
-      "submit": 0,
-      "cancel": 0,
-      "amend": 0
-    },
-    {
-      "role": "Accounts Manager",
-      "read": 1,
-      "write": 1,
-      "create": 1,
-      "delete": 0,
-      "submit": 0,
-      "cancel": 0,
-      "amend": 0
-    },
-    {
-      "role": "Donor",
-      "read": 1,
-      "print": 1
-    }
-  ]
+ "actions": [],
+ "autoname": "DNR-.YYYY.-.#####",
+ "creation": "2026-05-06 09:20:48.329494",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "identity_section",
+  "user",
+  "col_break_identity",
+  "contact",
+  "customer",
+  "donor_details_section",
+  "donor_name",
+  "email",
+  "alternate_email",
+  "col_break_details",
+  "donor_type",
+  "status",
+  "donor_since",
+  "preferred_communication",
+  "flags_section",
+  "is_anonymous",
+  "send_annual_statement",
+  "column_break_btbg",
+  "last_statement_emailed_year",
+  "welcome_email_sent_at",
+  "payment_platforms_section",
+  "payment_platforms",
+  "notes_section",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "identity_section",
+   "fieldtype": "Section Break",
+   "label": "Identity"
+  },
+  {
+   "description": "Frappe website user \u2013 required for portal access. Created automatically on first donation if donor registers.",
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User"
+  },
+  {
+   "fieldname": "col_break_identity",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "CRM Contact record \u2013 the identity anchor across all Frappe apps.",
+   "fieldname": "contact",
+   "fieldtype": "Link",
+   "label": "Contact",
+   "options": "Contact"
+  },
+  {
+   "description": "ERPNext Customer record \u2013 required for Sales Invoice generation.",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "donor_details_section",
+   "fieldtype": "Section Break",
+   "label": "Donor Details"
+  },
+  {
+   "bold": 1,
+   "fetch_from": "contact.full_name",
+   "fetch_if_empty": 1,
+   "fieldname": "donor_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Donor Name",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "contact.email_id",
+   "fetch_if_empty": 1,
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Email",
+   "options": "Email",
+   "reqd": 1
+  },
+  {
+   "description": "Previous or secondary email address. Useful when a donor changes email.",
+   "fieldname": "alternate_email",
+   "fieldtype": "Data",
+   "label": "Alternate Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "col_break_details",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Individual",
+   "fieldname": "donor_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Donor Type",
+   "options": "Individual\nOrganization\nChurch\nFoundation",
+   "reqd": 1
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Active\nLapsed\nInactive",
+   "reqd": 1
+  },
+  {
+   "fieldname": "donor_since",
+   "fieldtype": "Date",
+   "label": "Donor Since"
+  },
+  {
+   "default": "Email",
+   "fieldname": "preferred_communication",
+   "fieldtype": "Select",
+   "label": "Preferred Communication",
+   "options": "\nEmail\nPhone\nWhatsApp\nPost"
+  },
+  {
+   "fieldname": "flags_section",
+   "fieldtype": "Section Break",
+   "label": "Flags"
+  },
+  {
+   "default": "0",
+   "description": "Suppress donor name in public-facing reports and acknowledgments.",
+   "fieldname": "is_anonymous",
+   "fieldtype": "Check",
+   "label": "Anonymous Donor"
+  },
+  {
+   "default": "1",
+   "description": "Automatically email the donor a consolidated yearly statement PDF in early January. Donors can opt out.",
+   "fieldname": "send_annual_statement",
+   "fieldtype": "Check",
+   "label": "Send Annual Statement"
+  },
+  {
+   "description": "Idempotence key for the annual statement batch. Set automatically; clear it if you need to force a re-send for that year.",
+   "fieldname": "last_statement_emailed_year",
+   "fieldtype": "Int",
+   "label": "Last Statement Emailed (Year)",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "description": "Stamped when the first-donation welcome email is sent. Subsequent successful payments trigger the shorter thank-you email instead. Clear to force a fresh welcome on the next charge.",
+   "fieldname": "welcome_email_sent_at",
+   "fieldtype": "Datetime",
+   "label": "Welcome Email Sent At",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "payment_platforms_section",
+   "fieldtype": "Section Break",
+   "label": "Payment Platforms"
+  },
+  {
+   "description": "Gateway-specific customer identifiers. Supports multiple gateways (Stripe, PayPal, etc.) without schema changes.",
+   "fieldname": "payment_platforms",
+   "fieldtype": "Table",
+   "label": "Payment Platforms",
+   "options": "Donor Payment Platform"
+  },
+  {
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "column_break_btbg",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "links": [],
+ "modified": "2026-05-06 09:30:08.858794",
+ "modified_by": "Administrator",
+ "module": "Frappe Giving",
+ "name": "Donor",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "role": "Accounts Manager",
+   "write": 1
+  },
+  {
+   "print": 1,
+   "read": 1,
+   "role": "Donor"
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "donor_name,email",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "donor_name",
+ "track_changes": 1
 }

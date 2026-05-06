@@ -164,6 +164,18 @@ scheduler_events = {
     },
 }
 
+# Fixtures
+# --------
+# Bootstrap editable Email Templates so admins can tweak subject/body without
+# code changes. Filtered by name prefix so we only ever export our own.
+
+fixtures = [
+    {
+        "doctype": "Email Template",
+        "filters": [["name", "like", "frappe_giving_%"]],
+    },
+]
+
 # Testing
 # -------
 

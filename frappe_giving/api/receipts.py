@@ -258,15 +258,29 @@ def email_yearly_statement(donor_name: str, year: int) -> bool:
         order_by="donation_date desc",
     ) or _("our organisation")
 
-    subject = _("Your {0} donation statement from {1}").format(year, company_name)
-    message = _(
-        "Hi {0},\n\n"
-        "Thank you for your support of {1} in {2}. Your consolidated "
-        "donation statement for the year is attached as a PDF — please "
-        "keep it for your tax records.\n\n"
-        "You can also access this and previous years' statements anytime "
-        "through your donor portal."
-    ).format(donor.donor_name or _("friend"), company_name, year)
+    context = {
+        "donor_name": donor.donor_name or _("friend"),
+        "company_name": company_name,
+        "year": year,
+        "portal_url": frappe.utils.get_url("/donate/donorportal"),
+    }
+
+    template_name = "frappe_giving_annual_statement"
+    if frappe.db.exists("Email Template", template_name):
+        template = frappe.get_doc("Email Template", template_name)
+        subject = frappe.render_template(template.subject, context)
+        message = frappe.render_template(template.response, context)
+    else:
+        # Fallback so a missing fixture doesn't break the annual batch.
+        subject = _("Your {0} donation statement from {1}").format(year, company_name)
+        message = _(
+            "Hi {0},\n\n"
+            "Thank you for your support of {1} in {2}. Your consolidated "
+            "donation statement for the year is attached as a PDF — please "
+            "keep it for your tax records.\n\n"
+            "You can also access this and previous years' statements anytime "
+            "through your donor portal."
+        ).format(context["donor_name"], company_name, year)
 
     frappe.sendmail(
         recipients=[donor.email],
