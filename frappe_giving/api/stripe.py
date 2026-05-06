@@ -47,6 +47,7 @@ def initiate_stripe_payment(form_name, amount, frequency, donor_data):
             "doctype": "Donation",
             "donor": donor.name,
             "campaign": form.campaign,
+            "campaign_form": form.name,
             "company": _default_company(),
             "currency": currency,
             "amount": amount,

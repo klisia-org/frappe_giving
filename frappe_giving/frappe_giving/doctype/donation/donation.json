@@ -11,6 +11,7 @@
   "col_break_donor",
   "company",
   "campaign",
+  "campaign_form",
   "type_section",
   "frequency",
   "col_break_type",
@@ -90,6 +91,13 @@
    "label": "Campaign",
    "options": "Donation Campaign",
    "reqd": 1
+  },
+  {
+   "fieldname": "campaign_form",
+   "fieldtype": "Link",
+   "label": "Campaign Form",
+   "options": "Campaign Form",
+   "description": "The form the donor used. Stamped at donation creation; drives per-form receipt-email templates."
   },
   {
    "default": "USD",

@@ -6,3 +6,4 @@
 # Patches added in this section will be executed after doctypes are migrated
 frappe_giving.patches.create_donor_role
 frappe_giving.patches.backfill_welcome_email_sent_at
+frappe_giving.patches.enforce_donor_role_desk_access

@@ -96,6 +96,7 @@ def create_draft_donation(form_name, amount, frequency, donor_data):
             "doctype": "Donation",
             "donor": donor.name,
             "campaign": form.campaign,
+            "campaign_form": form.name,
             "company": _default_company(),
             "currency": campaign.currency or "USD",
             "amount": amount,

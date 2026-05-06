@@ -21,7 +21,8 @@ MariaDB error 1020 on its own FOR UPDATE.
 
 import frappe
 from frappe import _
-from frappe.utils import get_url, now_datetime, random_string
+from frappe.utils import get_url, now_datetime
+from frappe.utils.data import sha256_hash
 
 from frappe_giving.api.receipts import get_receipt_url
 
@@ -45,7 +46,14 @@ def send_donation_receipt_email(donation_payment_name: str) -> None:
         donation = frappe.db.get_value(
             "Donation",
             dp.donation,
-            ["donor", "campaign", "company", "currency", "donation_date"],
+            [
+                "donor",
+                "campaign",
+                "campaign_form",
+                "company",
+                "currency",
+                "donation_date",
+            ],
             as_dict=True,
         )
         if not donation or not donation.donor:
@@ -61,12 +69,10 @@ def send_donation_receipt_email(donation_payment_name: str) -> None:
             return
 
         is_first = not donor.welcome_email_sent_at
-        template_name = (
-            "frappe_giving_first_donation" if is_first else "frappe_giving_thank_you"
-        )
-        if not frappe.db.exists("Email Template", template_name):
+        template_name = _resolve_template_name(donation.campaign_form, is_first)
+        if not template_name:
             frappe.log_error(
-                title=f"Donation receipt email skipped: missing Email Template {template_name}",
+                title="Donation receipt email skipped: no usable Email Template",
                 message=f"Donation Payment: {donation_payment_name}",
             )
             return
@@ -106,6 +112,33 @@ def send_donation_receipt_email(donation_payment_name: str) -> None:
         )
 
 
+def _resolve_template_name(campaign_form_name, is_first: bool) -> str | None:
+    """Pick the Email Template for this charge.
+
+    Priority:
+      1. The Campaign Form's `email_template_first` / `email_template_recurring`
+         (lets each form ship its own donor copy).
+      2. The global `frappe_giving_first_donation` / `frappe_giving_thank_you`
+         fixtures, kept as a safety net so a Campaign Form without templates
+         still produces an email.
+
+    Returns `None` if neither resolves to an existing Email Template — the
+    caller logs and skips the send.
+    """
+    fieldname = "email_template_first" if is_first else "email_template_recurring"
+    fallback = "frappe_giving_first_donation" if is_first else "frappe_giving_thank_you"
+
+    if campaign_form_name:
+        per_form = frappe.db.get_value("Campaign Form", campaign_form_name, fieldname)
+        if per_form and frappe.db.exists("Email Template", per_form):
+            return per_form
+
+    if frappe.db.exists("Email Template", fallback):
+        return fallback
+
+    return None
+
+
 def _build_context(
     donor, donation, dp, donation_name, include_account_link: bool
 ) -> dict:
@@ -143,14 +176,22 @@ def _account_setup_url(user_name: str) -> str:
 
     Replicates `User.reset_password(send_email=False)` without loading the
     full User document, so we don't add a tabUser SELECT inside the donation
-    transaction.
+    transaction. Stores `sha256_hash(key)` in the DB and embeds the raw
+    `key` in the URL — same scheme as Frappe's built-in flow, otherwise
+    `/update-password` rejects the link as "expired or used".
     """
     try:
-        key = random_string(32)
+        key = frappe.generate_hash()
         frappe.db.set_value(
-            "User", user_name, "reset_password_key", key, update_modified=False
+            "User",
+            user_name,
+            {
+                "reset_password_key": sha256_hash(key),
+                "last_reset_password_key_generated_on": now_datetime(),
+            },
+            update_modified=False,
         )
-        return get_url(f"/update-password?key={key}")
+        return get_url(f"/update-password?key={key}", allow_header_override=False)
     except Exception:
         frappe.log_error(
             title=f"Account setup URL failed for user {user_name}",

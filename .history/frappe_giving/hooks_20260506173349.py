@@ -21,6 +21,7 @@ add_to_apps_screen = [
         "route": "/app/frappe-giving",
     }
 ]
+#
 
 # Includes in <head>
 # ------------------
@@ -61,11 +62,9 @@ add_to_apps_screen = [
 # home_page = "login"
 
 # website user home page (by Role)
-# Donors landing on `/` (e.g. via login redirect or "Login with email link")
-# go straight to the donor portal SPA instead of trying to hit Desk.
-role_home_page = {
-    "Donor": "/donate/donorportal",
-}
+# role_home_page = {
+# 	"Role": "home_page"
+# }
 
 # Generators
 # ----------
@@ -165,6 +164,18 @@ scheduler_events = {
         ],
     },
 }
+
+# Fixtures
+# --------
+# Bootstrap editable Email Templates so admins can tweak subject/body without
+# code changes. Filtered by name prefix so we only ever export our own.
+
+fixtures = [
+    {
+        "doctype": "Email Template",
+        "filters": [["name", "like", "frappe_giving_%"]],
+    },
+]
 
 # Testing
 # -------
