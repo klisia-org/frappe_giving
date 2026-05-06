@@ -12,6 +12,7 @@
     "copy-html-entry": "cp ../frappe_giving/public/frontend/index.html ../frappe_giving/www/donate.html"
   },
   "dependencies": {
+    "@seminary/portal-shell": "link:../../seminary/portal-shell",
     "@stripe/stripe-js": "^9.3.1",
     "socket.io-client": "^4.5.1",
     "vue": "^3.5.32",
