@@ -1,0 +1,25 @@
+{
+ "cards": [
+  {
+   "card": "Donations per Month"
+  }
+ ],
+ "charts": [
+  {
+   "chart": "Donor Base",
+   "width": "Half"
+  }
+ ],
+ "creation": "2026-05-06 11:20:02.947970",
+ "dashboard_name": "Frappe Giving",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 1,
+ "is_standard": 1,
+ "modified": "2026-05-06 11:56:42.194214",
+ "modified_by": "Administrator",
+ "module": "Frappe Giving",
+ "name": "Frappe Giving",
+ "owner": "Administrator"
+}

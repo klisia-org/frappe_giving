@@ -34,7 +34,11 @@
   "column_break_dgkc",
   "button_color",
   "integrations_section",
-  "stripe_product_id"
+  "stripe_product_id",
+  "section_break_gyys",
+  "email_template_first",
+  "column_break_wdjd",
+  "email_template_recurring"
  ],
  "fields": [
   {
@@ -214,10 +218,30 @@
    "fieldname": "button_color",
    "fieldtype": "Color",
    "label": "Button color"
+  },
+  {
+   "fieldname": "section_break_gyys",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "email_template_first",
+   "fieldtype": "Link",
+   "label": "Email Template First Time",
+   "options": "Email Template"
+  },
+  {
+   "fieldname": "column_break_wdjd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "email_template_recurring",
+   "fieldtype": "Link",
+   "label": "Email Template Recurring",
+   "options": "Email Template"
   }
  ],
  "links": [],
- "modified": "2026-04-24 21:42:55.976636",
+ "modified": "2026-05-06 12:04:45.999594",
  "modified_by": "Administrator",
  "module": "Frappe Giving",
  "name": "Campaign Form",
