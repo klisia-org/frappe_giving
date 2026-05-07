@@ -11,7 +11,9 @@
 // instance on each. Safe to include the <script>/<link> multiple times
 // per page — both are idempotent.
 
-import './index.css';
+// Widget-specific CSS: same as index.css without Tailwind preflight, so
+// the bundle doesn't reset the host page's typography. See widget.css.
+import './widget.css';
 import { createApp } from 'vue';
 import CampaignForm from './views/CampaignForm.vue';
 
