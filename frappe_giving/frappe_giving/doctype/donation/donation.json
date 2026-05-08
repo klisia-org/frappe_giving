@@ -26,6 +26,8 @@
   "donation_date",
   "currency",
   "amount",
+  "cover_fees",
+  "fee_recovered",
   "acknowledgment_sent",
   "col_break_amount",
   "exchange_rate",
@@ -108,11 +110,29 @@
    "options": "Currency"
   },
   {
+   "description": "Donor-stated amount that goes to the cause. Stripe is charged this plus Fee Recovered when the donor opts in.",
    "fieldname": "amount",
    "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Amount",
    "options": "currency"
+  },
+  {
+   "default": "0",
+   "description": "Donor opted to cover the processor fee.",
+   "fieldname": "cover_fees",
+   "fieldtype": "Check",
+   "label": "Donor Covered Fees",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.cover_fees",
+   "description": "Surcharge added to the Stripe charge so the cause nets the full Amount.",
+   "fieldname": "fee_recovered",
+   "fieldtype": "Currency",
+   "label": "Fee Recovered",
+   "options": "currency",
+   "read_only": 1
   },
   {
    "fieldname": "col_break_amount",

@@ -89,7 +89,7 @@ role_home_page = {
 # ------------
 
 # before_install = "frappe_giving.install.before_install"
-# after_install = "frappe_giving.install.after_install"
+after_install = "frappe_giving.install.after_install"
 
 # Uninstallation
 # ------------

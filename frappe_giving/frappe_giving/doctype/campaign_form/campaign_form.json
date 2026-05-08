@@ -29,6 +29,9 @@
   "show_donor_note",
   "allow_anonymous",
   "allow_custom_amount",
+  "fee_recovery_section",
+  "fee_recovery_display",
+  "fee_recovery_default",
   "color_customization_section",
   "background",
   "column_break_dgkc",
@@ -185,6 +188,27 @@
    "fieldname": "allow_custom_amount",
    "fieldtype": "Check",
    "label": "Allow Custom Amount"
+  },
+  {
+   "fieldname": "fee_recovery_section",
+   "fieldtype": "Section Break",
+   "label": "Transaction Fee Recovery"
+  },
+  {
+   "description": "Off (empty) hides the fee-recovery option. Currency shows the surcharge as a dollar amount; Percentage shows it as an effective percentage of the donation. Numbers come from Frappe Giving Settings.",
+   "fieldname": "fee_recovery_display",
+   "fieldtype": "Select",
+   "label": "Show Fee Recovery",
+   "options": "\nCurrency\nPercentage"
+  },
+  {
+   "default": "Opt-in",
+   "depends_on": "eval:doc.fee_recovery_display",
+   "description": "Opt-in: checkbox starts unchecked. Opt-out: checkbox starts checked.",
+   "fieldname": "fee_recovery_default",
+   "fieldtype": "Select",
+   "label": "Donor Default",
+   "options": "Opt-in\nOpt-out"
   },
   {
    "collapsible": 1,

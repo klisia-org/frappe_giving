@@ -25,7 +25,7 @@ async function resolveGivingLogo() {
 resolveGivingLogo().then((logoUrl) => {
 	configurePortals({
 		brand: {
-			name: 'Donor Portal',
+			name: 'Seminary Giving',
 			color: '#0D3049',
 			logoUrl,
 		},

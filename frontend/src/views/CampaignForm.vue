@@ -86,6 +86,18 @@
               :allow-custom="form.allow_custom_amount"
             />
 
+            <div v-if="form.fee_recovery_display && feeAmount > 0" class="flex items-start">
+              <input
+                id="cover-fees"
+                v-model="coverFees"
+                type="checkbox"
+                class="fg-check mt-1 h-4 w-4 rounded border-gray-300"
+              />
+              <label for="cover-fees" class="ml-2 text-sm">
+                {{ feeMessage }}
+              </label>
+            </div>
+
             <div>
               <label class="block text-sm font-medium mb-2">Frequency</label>
               <div class="flex gap-2">
@@ -152,6 +164,14 @@
                     / {{ frequency.toLowerCase() }}
                   </span>
                 </span>
+              </div>
+              <div v-if="coverFees && feeAmount > 0" class="flex justify-between mt-1">
+                <span>Fee covered</span>
+                <span class="font-medium">{{ currencySymbol }}{{ feeAmount.toFixed(2) }}</span>
+              </div>
+              <div v-if="coverFees && feeAmount > 0" class="flex justify-between mt-1 pt-1 border-t border-gray-200">
+                <span>Total charged</span>
+                <span class="font-medium">{{ currencySymbol }}{{ chargeTotal.toFixed(2) }}</span>
               </div>
             </div>
 
@@ -263,6 +283,7 @@ export default {
       publishableKey: null,
       paymentMode: null,
       selectedAmount: null,
+      coverFees: false,
       frequency: this.defaultFrequency || "One-Time",
       donor: {
         full_name: this.prefilledDonor?.full_name || "",
@@ -282,6 +303,34 @@ export default {
   computed: {
     currencySymbol() {
       return this.form?.currency === "USD" ? "$" : this.form?.currency || "$";
+    },
+    feeAmount() {
+      const amount = Number(this.selectedAmount) || 0;
+      const pct = Number(this.form?.fee_percentage) || 0;
+      const fixed = Number(this.form?.fee_fixed) || 0;
+      const p = pct / 100;
+      if (amount <= 0 || p <= 0 || p >= 1) return 0;
+      // Match the server gross-up formula and round to cents.
+      return Math.round(((amount * p + fixed) / (1 - p)) * 100) / 100;
+    },
+    feePercentEffective() {
+      const amount = Number(this.selectedAmount) || 0;
+      if (amount <= 0) return 0;
+      return (this.feeAmount / amount) * 100;
+    },
+    feeMessage() {
+      const template =
+        this.form?.fee_recovery_message_template ||
+        "Add {fee} to cover transaction fees so 100% of your gift reaches the cause.";
+      const valueText =
+        this.form?.fee_recovery_display === "Percentage"
+          ? `${this.feePercentEffective.toFixed(2)}%`
+          : `${this.currencySymbol}${this.feeAmount.toFixed(2)}`;
+      return template.replace(/\{fee\}/g, valueText);
+    },
+    chargeTotal() {
+      const amount = Number(this.selectedAmount) || 0;
+      return amount + (this.coverFees ? this.feeAmount : 0);
     },
     themeVars() {
       // Only override vars the author actually set; everything else falls
@@ -316,6 +365,7 @@ export default {
       this.selectedAmount = defaultLevel
         ? defaultLevel.amount
         : (form.giving_levels?.[0]?.amount ?? null);
+      this.coverFees = form.fee_recovery_default === "Opt-out";
     } catch (e) {
       this.error = e?.message || "This donation form is not available.";
     } finally {
@@ -350,6 +400,7 @@ export default {
             amount: this.selectedAmount,
             frequency: this.frequency,
             donor_data: this.donor,
+            cover_fees: this.coverFees ? 1 : 0,
           }
         );
         this.donationName = res.donation;

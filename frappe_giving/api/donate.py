@@ -3,6 +3,16 @@ from frappe import _
 
 
 @frappe.whitelist(allow_guest=True)
+def get_branding():
+    return {
+        "giving_logo": frappe.db.get_single_value(
+            "Frappe Giving Settings", "giving_logo"
+        )
+        or "",
+    }
+
+
+@frappe.whitelist(allow_guest=True)
 def get_campaign_form(form_name):
     if not frappe.db.exists("Campaign Form", form_name):
         frappe.throw(_("Form not found."), frappe.DoesNotExistError)
@@ -13,6 +23,7 @@ def get_campaign_form(form_name):
         frappe.throw(_("This donation form is not active."))
 
     campaign = frappe.get_doc("Donation Campaign", form.campaign)
+    settings = frappe.get_cached_doc("Frappe Giving Settings")
 
     return {
         "form_title": form.form_title,
@@ -41,6 +52,11 @@ def get_campaign_form(form_name):
             }
             for level in (form.giving_levels or [])
         ],
+        "fee_recovery_display": form.fee_recovery_display or "",
+        "fee_recovery_default": form.fee_recovery_default or "Opt-in",
+        "fee_percentage": float(settings.fee_percentage or 0),
+        "fee_fixed": float(settings.fee_fixed or 0),
+        "fee_recovery_message_template": settings.fee_recovery_message_template or "",
     }
 
 

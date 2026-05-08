@@ -16,10 +16,11 @@
   "goal_section",
   "goal_amount",
   "currency",
+  "payment_term",
   "column_break_rked",
+  "account",
   "cost_center",
   "erp_item",
-  "payment_term",
   "description_section",
   "description"
  ],
@@ -126,11 +127,18 @@
    "fieldtype": "Link",
    "label": "Payment Gateway",
    "options": "Payment Gateway"
+  },
+  {
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "label": "Account",
+   "options": "Account",
+   "reqd": 1
   }
  ],
  "links": [],
- "modified": "2026-04-17 11:48:06.375413",
- "modified_by": "Administrator",
+ "modified": "2026-05-08 17:29:05.331314",
+ "modified_by": "murilomelodts@gmail.com",
  "module": "Frappe Giving",
  "name": "Donation Campaign",
  "naming_rule": "Expression",

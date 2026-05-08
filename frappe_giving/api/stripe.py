@@ -2,6 +2,7 @@
 
 import frappe
 from frappe import _
+from frappe.utils import cint
 
 from frappe_giving import stripe_helpers
 from frappe_giving.api.donate import (
@@ -9,10 +10,11 @@ from frappe_giving.api.donate import (
     _find_or_create_donor,
 )
 from frappe_giving.api.notifications import send_donation_receipt_email
+from frappe_giving.fee_recovery import compute_fee_recovery
 
 
 @frappe.whitelist(allow_guest=True, methods=["POST"])
-def initiate_stripe_payment(form_name, amount, frequency, donor_data):
+def initiate_stripe_payment(form_name, amount, frequency, donor_data, cover_fees=0):
     """Create the Donor (if new), a Draft Donation, and a Stripe charge.
 
     Returns the client_secret the frontend needs to confirm payment.
@@ -40,6 +42,16 @@ def initiate_stripe_payment(form_name, amount, frequency, donor_data):
     campaign = frappe.get_doc("Donation Campaign", form.campaign)
     currency = campaign.currency or "USD"
 
+    # Recompute fee server-side from Settings; the client only signals intent.
+    cover_fees = bool(cint(cover_fees)) and bool(form.fee_recovery_display)
+    fee_recovered = 0.0
+    if cover_fees:
+        settings = frappe.get_cached_doc("Frappe Giving Settings")
+        fee_recovered = float(
+            compute_fee_recovery(amount, settings.fee_percentage, settings.fee_fixed)
+        )
+    charge_amount = amount + fee_recovered
+
     donor = _find_or_create_donor(email, full_name, donor_data)
 
     donation = frappe.get_doc(
@@ -51,6 +63,8 @@ def initiate_stripe_payment(form_name, amount, frequency, donor_data):
             "company": _default_company(),
             "currency": currency,
             "amount": amount,
+            "cover_fees": 1 if cover_fees else 0,
+            "fee_recovered": fee_recovered,
             "exchange_rate": 1,
             "frequency": frequency,
             "donor_note": donor_data.get("donor_note"),
@@ -65,7 +79,7 @@ def initiate_stripe_payment(form_name, amount, frequency, donor_data):
 
     if frequency == "One-Time":
         pi = stripe_helpers.create_payment_intent(
-            amount=amount,
+            amount=charge_amount,
             currency=currency,
             customer_id=customer_id,
             donation_name=donation.name,
@@ -78,9 +92,9 @@ def initiate_stripe_payment(form_name, amount, frequency, donor_data):
             "publishable_key": stripe_helpers.get_publishable_key(),
         }
 
-    # Recurring
+    # Recurring — apply gross-up to every cycle so the cause nets `amount` each time.
     sub = stripe_helpers.create_subscription(
-        amount=amount,
+        amount=charge_amount,
         currency=currency,
         customer_id=customer_id,
         donation_name=donation.name,

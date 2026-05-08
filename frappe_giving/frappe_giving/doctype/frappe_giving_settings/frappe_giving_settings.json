@@ -1,47 +1,117 @@
 {
-  "name": "Frappe Giving Settings",
-  "doctype": "DocType",
-  "module": "Frappe Giving",
-  "issingle": 1,
-  "track_changes": 1,
-  "engine": "InnoDB",
-  "fields": [
-    {
-      "fieldname": "stripe_section",
-      "fieldtype": "Section Break",
-      "label": "Stripe"
-    },
-    {
-      "fieldname": "stripe_settings",
-      "fieldtype": "Link",
-      "label": "Stripe Settings",
-      "options": "Stripe Settings",
-      "description": "Which Stripe Settings record (from the payments app) provides the publishable/secret keys."
-    },
-    {
-      "fieldname": "stripe_webhook_secret",
-      "fieldtype": "Password",
-      "label": "Stripe Webhook Secret",
-      "description": "Signing secret from the Stripe Dashboard webhook endpoint (whsec_...). Required for webhook verification."
-    },
-    {
-      "fieldname": "col_break_stripe",
-      "fieldtype": "Column Break"
-    },
-    {
-      "fieldname": "enable_live_mode",
-      "fieldtype": "Check",
-      "label": "Live Mode",
-      "default": 0,
-      "description": "Cosmetic flag — the actual mode is determined by which Stripe Settings record is selected above."
-    }
-  ],
-  "permissions": [
-    {
-      "role": "System Manager",
-      "read": 1,
-      "write": 1,
-      "create": 1
-    }
-  ]
+ "actions": [],
+ "creation": "2026-04-24 14:15:51.845789",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "branding_section",
+  "giving_logo",
+  "fee_recovery_section",
+  "fee_percentage",
+  "fee_fixed",
+  "fee_recovery_message_template",
+  "item_fee_recovery",
+  "account_fee_recovery",
+  "stripe_section",
+  "stripe_settings",
+  "stripe_webhook_secret",
+  "col_break_stripe",
+  "enable_live_mode"
+ ],
+ "fields": [
+  {
+   "fieldname": "stripe_section",
+   "fieldtype": "Section Break",
+   "label": "Stripe"
+  },
+  {
+   "description": "Which Stripe Settings record (from the payments app) provides the publishable/secret keys.",
+   "fieldname": "stripe_settings",
+   "fieldtype": "Link",
+   "label": "Stripe Settings",
+   "options": "Stripe Settings"
+  },
+  {
+   "description": "Signing secret from the Stripe Dashboard webhook endpoint (whsec_...). Required for webhook verification.",
+   "fieldname": "stripe_webhook_secret",
+   "fieldtype": "Password",
+   "label": "Stripe Webhook Secret"
+  },
+  {
+   "fieldname": "col_break_stripe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Cosmetic flag \u2014 the actual mode is determined by which Stripe Settings record is selected above.",
+   "fieldname": "enable_live_mode",
+   "fieldtype": "Check",
+   "label": "Live Mode"
+  },
+  {
+   "fieldname": "branding_section",
+   "fieldtype": "Section Break",
+   "label": "Branding"
+  },
+  {
+   "fieldname": "giving_logo",
+   "fieldtype": "Attach Image",
+   "label": "Giving Portal Logo"
+  },
+  {
+   "fieldname": "fee_recovery_section",
+   "fieldtype": "Section Break",
+   "label": "Transaction Fee Recovery"
+  },
+  {
+   "description": "Processor percentage rate, e.g. 2.5 for 2.5%.",
+   "fieldname": "fee_percentage",
+   "fieldtype": "Float",
+   "label": "Processor Percentage"
+  },
+  {
+   "description": "Per-transaction fixed fee in the campaign currency, e.g. 0.40.",
+   "fieldname": "fee_fixed",
+   "fieldtype": "Currency",
+   "label": "Processor Fixed Fee"
+  },
+  {
+   "description": "Donor-facing message. Use {fee} as a placeholder. Example: 'Add {fee} to cover transaction fees so 100% of your gift reaches the cause.'",
+   "fieldname": "fee_recovery_message_template",
+   "fieldtype": "Small Text",
+   "label": "Donor-Facing Message"
+  },
+  {
+   "fieldname": "item_fee_recovery",
+   "fieldtype": "Link",
+   "label": "Item for fee recovery",
+   "options": "Item"
+  },
+  {
+   "fieldname": "account_fee_recovery",
+   "fieldtype": "Link",
+   "label": "Account for Fee Recovery",
+   "options": "Account"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-05-08 17:16:37.347451",
+ "modified_by": "murilomelodts@gmail.com",
+ "module": "Frappe Giving",
+ "name": "Frappe Giving Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
 }
