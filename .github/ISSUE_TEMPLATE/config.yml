@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security disclosure
+    url: mailto:support@klisia.org
+    about: Please report security issues privately rather than via a public issue.
+  - name: Question or discussion
+    url: https://github.com/klisia-org/frappe_giving/discussions
+    about: For open-ended questions, design discussions, or feedback on direction.

@@ -1,0 +1,95 @@
+name: Bug report
+description: Something isn't working as expected — donations, receipts, the donor portal, or admin-side tooling.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug. Please include enough detail
+        for someone else to reproduce it. If the bug involves donor data,
+        scrub names, emails, and Stripe IDs before pasting logs.
+
+        For **security issues**, please email support@klisia.org instead of
+        opening a public issue.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: One or two sentences describing what's wrong.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Numbered steps so we can hit the same path.
+      placeholder: |
+        1. Open /donate/<form>
+        2. Enter $100, opt-in to cover fees
+        3. Submit — observe …
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What you saw instead. Screenshots welcome (drag onto the field).
+    validations:
+      required: true
+
+  - type: input
+    id: frappe_version
+    attributes:
+      label: Frappe / ERPNext version
+      placeholder: "e.g. Frappe 16.0.0, ERPNext 16.0.0"
+    validations:
+      required: true
+
+  - type: input
+    id: app_version
+    attributes:
+      label: Frappe Giving version / commit
+      placeholder: "tag or commit SHA"
+
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Where does the bug occur?
+      multiple: true
+      options:
+        - Donor portal SPA (/donate/donorportal)
+        - Standalone form (/donate/<form>)
+        - Embeddable widget (host page)
+        - Desk (Donation / Donor / Campaign / Settings forms)
+        - Stripe webhook / payment flow
+        - Receipts / yearly statements
+        - Email notifications
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs / errors
+      description: |
+        Console errors, server traceback, or Frappe Error Log entries.
+        Please scrub secrets and donor PII.
+      render: shell
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else?
+      description: Hypotheses, suspected commits, related issues, environment quirks.
