@@ -1,0 +1,59 @@
+name: Feature request
+description: Propose a new feature, integration, or improvement.
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Quick proposals are great. For larger changes (new payment integration,
+        substantial schema/data-flow change, security-sensitive work), it's
+        worth landing an ADR alongside the PR — see existing ones in
+        `.docs/adr/`.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's the problem or use case?
+      description: |
+        Describe the situation prompting this request. "Donors who give in EUR
+        can't see…" or "operators running multi-company want…" — the more
+        concrete the better.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: How you'd like it to work. Sketches, mocks, or pseudo-code welcome.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: What other approaches did you think about, and why is the proposed one preferable?
+
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Which area does this affect?
+      multiple: true
+      options:
+        - Donor portal SPA
+        - Standalone donation form
+        - Embeddable widget
+        - Desk (admin) forms
+        - Stripe / payment flow
+        - Receipts / yearly statements
+        - Email notifications
+        - Reporting / dashboards
+        - Other
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else?
+      description: Links to similar features in other tools, related issues, willingness to send a PR.
