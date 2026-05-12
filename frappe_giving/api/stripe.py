@@ -13,8 +13,17 @@ from frappe_giving.api.notifications import send_donation_receipt_email
 from frappe_giving.fee_recovery import compute_fee_recovery
 
 
+# Guest-accessible: anonymous donors are the primary user. Amount + fee
+# recomputed server-side; Stripe customer/PaymentIntent scoped to posted email.
+# nosemgrep: guest-whitelisted-method
 @frappe.whitelist(allow_guest=True, methods=["POST"])
-def initiate_stripe_payment(form_name, amount, frequency, donor_data, cover_fees=0):
+def initiate_stripe_payment(
+    form_name: str,
+    amount: float | str,
+    frequency: str,
+    donor_data: dict | str,
+    cover_fees: int | str = 0,
+):
     """Create the Donor (if new), a Draft Donation, and a Stripe charge.
 
     Returns the client_secret the frontend needs to confirm payment.
@@ -126,8 +135,12 @@ def initiate_stripe_payment(form_name, amount, frequency, donor_data, cover_fees
     }
 
 
+# Guest-accessible: post-payment confirm callback. PaymentIntent is retrieved
+# from Stripe and its metadata.donation_name must match `donation_name` before
+# any DB write.
+# nosemgrep: guest-whitelisted-method
 @frappe.whitelist(allow_guest=True, methods=["POST"])
-def confirm_donation_payment(donation_name, payment_intent_id):
+def confirm_donation_payment(donation_name: str, payment_intent_id: str):
     """Synchronous confirmation after the donor's browser completes payment.
 
     The frontend calls this immediately after `stripe.confirmPayment` resolves
@@ -175,6 +188,9 @@ def confirm_donation_payment(donation_name, payment_intent_id):
     }
 
 
+# Guest-accessible: Stripe webhook endpoint. Payload is verified via
+# Stripe-Signature HMAC against the signing secret before any handler runs.
+# nosemgrep: guest-whitelisted-method
 @frappe.whitelist(allow_guest=True, methods=["POST"])
 def webhook():
     """Entry point for Stripe webhooks.
@@ -249,7 +265,9 @@ def _handle_payment_intent_succeeded(pi):
     # lock cleanly, or — if the racing transaction is still in progress
     # — blocks until it commits. Either way, the idempotence check
     # below catches the duplicate.
-    frappe.db.commit()
+    # Reset REPEATABLE READ snapshot before FOR UPDATE — see comment above
+    # for the MariaDB error 1020 rationale.
+    frappe.db.commit()  # nosemgrep: frappe-manual-commit
 
     try:
         donation = frappe.get_doc("Donation", donation_name, for_update=True)

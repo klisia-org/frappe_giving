@@ -77,6 +77,9 @@ def _render_pdf(doctype: str, name: str, print_format: str, doc=None) -> bytes:
             if doc is None:
                 doc = frappe.get_doc(doctype, name)
             pf = frappe.get_doc("Print Format", print_format)
+            # Print Format HTML is admin-authored; doc context is limited to
+            # Donation / Donor fields.
+            # nosemgrep: frappe-ssti
             html = frappe.render_template(pf.html, {"doc": doc})
         finally:
             frappe.flags.ignore_permissions = prev
@@ -91,7 +94,10 @@ def _render_pdf(doctype: str, name: str, print_format: str, doc=None) -> bytes:
     )
 
 
-@frappe.whitelist(allow_guest=True)
+# Guest-accessible: emailed receipt links must work without login. Access is
+# gated by HMAC token (validate_token) or by session-user matching the
+# donation's donor.
+@frappe.whitelist(allow_guest=True)  # nosemgrep: guest-whitelisted-method
 def download_donation_receipt(donation: str, token: str | None = None):
     """Stream a single-donation receipt PDF.
 
@@ -268,18 +274,19 @@ def email_yearly_statement(donor_name: str, year: int) -> bool:
     template_name = "frappe_giving_annual_statement"
     if frappe.db.exists("Email Template", template_name):
         template = frappe.get_doc("Email Template", template_name)
+        # Email Template content is admin-authored (System Manager role by default).
+        # nosemgrep: frappe-ssti
         subject = frappe.render_template(template.subject, context)
+        # nosemgrep: frappe-ssti
         message = frappe.render_template(template.response, context)
     else:
         # Fallback so a missing fixture doesn't break the annual batch.
         subject = _("Your {0} donation statement from {1}").format(year, company_name)
+        # Single string literal; the rule's regex false-positives on \n
+        # escapes inside _() calls.
+        # nosemgrep: frappe-translation-python-splitting
         message = _(
-            "Hi {0},\n\n"
-            "Thank you for your support of {1} in {2}. Your consolidated "
-            "donation statement for the year is attached as a PDF — please "
-            "keep it for your tax records.\n\n"
-            "You can also access this and previous years' statements anytime "
-            "through your donor portal."
+            "Hi {0},\n\nThank you for your support of {1} in {2}. Your consolidated donation statement for the year is attached as a PDF — please keep it for your tax records.\n\nYou can also access this and previous years' statements anytime through your donor portal."
         ).format(context["donor_name"], company_name, year)
 
     frappe.sendmail(

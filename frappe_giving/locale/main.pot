@@ -1,0 +1,1423 @@
+# Translations template for Frappe Giving.
+# Copyright (C) 2026 Klisia
+# This file is distributed under the same license as the Frappe Giving project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Frappe Giving VERSION\n"
+"Report-Msgid-Bugs-To: support@klisia.org\n"
+"POT-Creation-Date: 2026-05-12 14:16-0609\n"
+"PO-Revision-Date: 2026-05-12 14:16-0609\n"
+"Last-Translator: support@klisia.org\n"
+"Language-Team: support@klisia.org\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.js:61
+msgid "1. Paste into the embed block"
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.js:72
+msgid "2. Paste into the page's Javascript field"
+msgstr ""
+
+#. Header text in the Frappe Giving Workspace
+#: frappe_giving/frappe_giving/workspace/frappe_giving/frappe_giving.json
+msgid "<span class=\"h4\">Donor Management</span>"
+msgstr ""
+
+#. Label of the account (Link) field in DocType 'Donation Campaign'
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+msgid "Account"
+msgstr ""
+
+#. Label of the account_fee_recovery (Link) field in DocType 'Frappe Giving
+#. Settings'
+#: frappe_giving/frappe_giving/doctype/frappe_giving_settings/frappe_giving_settings.json
+msgid "Account for Fee Recovery"
+msgstr ""
+
+#. Label of the accounting_section (Section Break) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Accounting"
+msgstr ""
+
+#. Name of a role
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Accounts Manager"
+msgstr ""
+
+#. Name of a role
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Accounts User"
+msgstr ""
+
+#. Label of the acknowledgment_date (Date) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Acknowledgment Date"
+msgstr ""
+
+#. Label of the acknowledgment_sent (Check) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Acknowledgment Sent"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Campaign Form'
+#. Option for the 'Subscription Status' (Select) field in DocType 'Donation'
+#. Option for the 'Status' (Select) field in DocType 'Donation Campaign'
+#. Option for the 'Status' (Select) field in DocType 'Donor'
+#. Option for the 'Status' (Select) field in DocType 'Donor Payment Platform'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+#: frappe_giving/frappe_giving/doctype/donor_payment_platform/donor_payment_platform.json
+msgid "Active"
+msgstr ""
+
+#. Label of the allow_anonymous (Check) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Allow Anonymous"
+msgstr ""
+
+#. Label of the allow_custom_amount (Check) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Allow Custom Amount"
+msgstr ""
+
+#. Label of the alternate_email (Data) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Alternate Email"
+msgstr ""
+
+#. Label of the amended_from (Link) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Amended From"
+msgstr ""
+
+#. Label of the amount (Currency) field in DocType 'Campaign Form Giving Level'
+#. Label of the amount (Currency) field in DocType 'Donation'
+#. Label of the amount (Currency) field in DocType 'Donation Payment'
+#: frappe_giving/frappe_giving/doctype/campaign_form_giving_level/campaign_form_giving_level.json
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+msgid "Amount"
+msgstr ""
+
+#. Label of the amount_usd (Currency) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Amount (USD)"
+msgstr ""
+
+#. Option for the 'Frequency' (Select) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Annual"
+msgstr ""
+
+#. Label of the is_anonymous (Check) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Anonymous"
+msgstr ""
+
+#. Label of the is_anonymous (Check) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Anonymous Donor"
+msgstr ""
+
+#: frappe_giving/api/portal.py:19 frappe_giving/api/portal.py:37
+#: frappe_giving/api/receipts.py:119
+msgid "Authentication required."
+msgstr ""
+
+#. Description of the 'Stripe Product ID' (Data) field in DocType 'Campaign
+#. Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Auto-populated on the first recurring subscription for this form. Reused for subsequent subscriptions to avoid duplicate Products in the Stripe Dashboard. Clear this field to force a fresh Product on next use."
+msgstr ""
+
+#. Description of the 'Send Annual Statement' (Check) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Automatically email the donor a consolidated yearly statement PDF in early January. Donors can opt out."
+msgstr ""
+
+#. Label of the background (Color) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Background color"
+msgstr ""
+
+#. Label of the basics_section (Section Break) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Basics"
+msgstr ""
+
+#. Label of the branding_section (Section Break) field in DocType 'Frappe
+#. Giving Settings'
+#: frappe_giving/frappe_giving/doctype/frappe_giving_settings/frappe_giving_settings.json
+msgid "Branding"
+msgstr ""
+
+#. Label of the button_color (Color) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Button color"
+msgstr ""
+
+#. Description of the 'Contact' (Link) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "CRM Contact record – the identity anchor across all Frappe apps."
+msgstr ""
+
+#. Label of the cta_label (Data) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Call-to-Action Label"
+msgstr ""
+
+#. Label of the campaign (Link) field in DocType 'Campaign Form'
+#. Label of the campaign (Link) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Campaign"
+msgstr ""
+
+#. Name of a DocType
+#. Label of the campaign_form (Link) field in DocType 'Donation'
+#. Label of a Link in the Frappe Giving Workspace
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+#: frappe_giving/frappe_giving/workspace/frappe_giving/frappe_giving.json
+msgid "Campaign Form"
+msgstr ""
+
+#. Name of a DocType
+#: frappe_giving/frappe_giving/doctype/campaign_form_giving_level/campaign_form_giving_level.json
+msgid "Campaign Form Giving Level"
+msgstr ""
+
+#. Label of the campaign_name (Data) field in DocType 'Donation Campaign'
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+msgid "Campaign Name"
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.py:22
+msgid "Campaign {0} is already set as the default. Please uncheck it first before setting a new default."
+msgstr ""
+
+#. Label of a Card Break in the Frappe Giving Workspace
+#: frappe_giving/frappe_giving/workspace/frappe_giving/frappe_giving.json
+msgid "Campaigns"
+msgstr ""
+
+#. Option for the 'Subscription Status' (Select) field in DocType 'Donation'
+#. Option for the 'Status' (Select) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Cancelled"
+msgstr ""
+
+#. Option for the 'Donor Type' (Select) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Church"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Donation Campaign'
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+msgid "Closed"
+msgstr ""
+
+#. Label of the color_customization_section (Section Break) field in DocType
+#. 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Color Customization"
+msgstr ""
+
+#. Label of the communication_section (Section Break) field in DocType
+#. 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Communication"
+msgstr ""
+
+#. Label of the company (Link) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Company"
+msgstr ""
+
+#. Description of the 'Amount (USD)' (Currency) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Computed: Amount × Exchange Rate. Used for USD-basis reporting."
+msgstr ""
+
+#. Label of the contact (Link) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Contact"
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/donor/donor.py:91
+msgid "Contact {0} created and linked to Donor and Customer"
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.js:10
+msgid "Copy Embed Snippet"
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.js:78
+msgid "Copy loader script"
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.js:67
+msgid "Copy mount div"
+msgstr ""
+
+#. Description of the 'Live Mode' (Check) field in DocType 'Frappe Giving
+#. Settings'
+#: frappe_giving/frappe_giving/doctype/frappe_giving_settings/frappe_giving_settings.json
+msgid "Cosmetic flag — the actual mode is determined by which Stripe Settings record is selected above."
+msgstr ""
+
+#. Label of the cost_center (Link) field in DocType 'Donation Campaign'
+#. Label of a Link in the Frappe Giving Workspace
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+#: frappe_giving/frappe_giving/workspace/frappe_giving/frappe_giving.json
+msgid "Cost Center"
+msgstr ""
+
+#. Label of the created_on (Date) field in DocType 'Donor Payment Platform'
+#: frappe_giving/frappe_giving/doctype/donor_payment_platform/donor_payment_platform.json
+msgid "Created On"
+msgstr ""
+
+#. Option for the 'Show Fee Recovery' (Select) field in DocType 'Campaign Form'
+#. Label of the currency (Link) field in DocType 'Donation'
+#. Label of the currency (Link) field in DocType 'Donation Campaign'
+#. Label of the currency (Link) field in DocType 'Donation Payment'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+msgid "Currency"
+msgstr ""
+
+#. Label of the customer (Link) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Customer"
+msgstr ""
+
+#. Label of the customer_id (Data) field in DocType 'Donor Payment Platform'
+#: frappe_giving/frappe_giving/doctype/donor_payment_platform/donor_payment_platform.json
+msgid "Customer ID"
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/donor/donor.py:65
+msgid "Customer {0} created and linked to Donor"
+msgstr ""
+
+#. Description of the 'Processing Date' (Date) field in DocType 'Donation
+#. Payment'
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+msgid "Date Payment Gateway (e.g., Stripe) processed this charge."
+msgstr ""
+
+#. Label of the is_default (Check) field in DocType 'Campaign Form Giving
+#. Level'
+#. Label of the is_default (Check) field in DocType 'Donor Payment Platform'
+#: frappe_giving/frappe_giving/doctype/campaign_form_giving_level/campaign_form_giving_level.json
+#: frappe_giving/frappe_giving/doctype/donor_payment_platform/donor_payment_platform.json
+msgid "Default"
+msgstr ""
+
+#. Label of the default (Check) field in DocType 'Donation Campaign'
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+msgid "Default Campaign"
+msgstr ""
+
+#. Label of the payment_term (Link) field in DocType 'Donation Campaign'
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+msgid "Default Payment Term"
+msgstr ""
+
+#. Label of the description (Text Editor) field in DocType 'Campaign Form'
+#. Label of the description_section (Section Break) field in DocType 'Donation
+#. Campaign'
+#. Label of the description (Text Editor) field in DocType 'Donation Campaign'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+msgid "Description"
+msgstr ""
+
+#. Option for the 'Donation Via' (Select) field in DocType 'Donation Campaign'
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+msgid "Direct Payment"
+msgstr ""
+
+#. Label of a Link in the Frappe Giving Workspace
+#: frappe_giving/frappe_giving/workspace/frappe_giving/frappe_giving.json
+msgid "Direct Subscription"
+msgstr ""
+
+#. Name of a DocType
+#. Label of the donation (Link) field in DocType 'Donation Payment'
+#. Label of a Link in the Frappe Giving Workspace
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+#: frappe_giving/frappe_giving/workspace/frappe_giving/frappe_giving.json
+msgid "Donation"
+msgstr ""
+
+#. Name of a DocType
+#. Label of a Link in the Frappe Giving Workspace
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+#: frappe_giving/frappe_giving/workspace/frappe_giving/frappe_giving.json
+msgid "Donation Campaign"
+msgstr ""
+
+#. Label of the donation_date (Date) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Donation Date"
+msgstr ""
+
+#. Name of a DocType
+#. Label of a Link in the Frappe Giving Workspace
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+#: frappe_giving/frappe_giving/workspace/frappe_giving/frappe_giving.json
+msgid "Donation Payment"
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/donation/donation.py:162
+msgid "Donation Payment {0} created"
+msgstr ""
+
+#. Label of the donation_via (Data) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Donation Type"
+msgstr ""
+
+#. Label of the donation_via (Select) field in DocType 'Donation Campaign'
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+msgid "Donation Via"
+msgstr ""
+
+#: frappe_giving/api/donate.py:111 frappe_giving/api/stripe.py:44
+msgid "Donation amount must be greater than zero."
+msgstr ""
+
+#: frappe_giving/api/receipts.py:112
+msgid "Donation not found."
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/donation/donation.py:70
+msgid "Donation {0} – Campaign: {1}"
+msgstr ""
+
+#: frappe_giving/api/stripe.py:87
+msgid "Donation {0} – {1}"
+msgstr ""
+
+#. Label of a Card Break in the Frappe Giving Workspace
+#: frappe_giving/frappe_giving/workspace/frappe_giving/frappe_giving.json
+msgid "Donations"
+msgstr ""
+
+#. Label of the donor_section (Section Break) field in DocType 'Donation'
+#. Label of the donor (Link) field in DocType 'Donation'
+#. Name of a role
+#. Name of a DocType
+#. Label of a Link in the Frappe Giving Workspace
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+#: frappe_giving/frappe_giving/workspace/frappe_giving/frappe_giving.json
+msgid "Donor"
+msgstr ""
+
+#. Label of the cover_fees (Check) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Donor Covered Fees"
+msgstr ""
+
+#. Label of the fee_recovery_default (Select) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Donor Default"
+msgstr ""
+
+#. Label of the donor_details_section (Section Break) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Donor Details"
+msgstr ""
+
+#. Label of the donor_name (Data) field in DocType 'Donation'
+#. Label of the donor_name (Data) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Donor Name"
+msgstr ""
+
+#. Label of the donor_note (Small Text) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Donor Note"
+msgstr ""
+
+#. Name of a DocType
+#: frappe_giving/frappe_giving/doctype/donor_payment_platform/donor_payment_platform.json
+msgid "Donor Payment Platform"
+msgstr ""
+
+#. Label of the donor_since (Date) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Donor Since"
+msgstr ""
+
+#. Label of the donor_type (Select) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Donor Type"
+msgstr ""
+
+#. Description of the 'Donor Covered Fees' (Check) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Donor opted to cover the processor fee."
+msgstr ""
+
+#: frappe_giving/api/receipts.py:243
+msgid "Donor {0} has no email on file."
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/donation/donation.py:46
+msgid "Donor {0} has no linked Customer. Please save the Donor record first to auto-create one."
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/donation/donation.py:267
+msgid "Donor {0} has no linked Customer; cannot create an ERPNext Subscription."
+msgstr ""
+
+#. Label of the fee_recovery_message_template (Small Text) field in DocType
+#. 'Frappe Giving Settings'
+#: frappe_giving/frappe_giving/doctype/frappe_giving_settings/frappe_giving_settings.json
+msgid "Donor-Facing Message"
+msgstr ""
+
+#. Description of the 'Donor-Facing Message' (Small Text) field in DocType
+#. 'Frappe Giving Settings'
+#: frappe_giving/frappe_giving/doctype/frappe_giving_settings/frappe_giving_settings.json
+#, python-format
+msgid "Donor-facing message. Use {fee} as a placeholder. Example: 'Add {fee} to cover transaction fees so 100% of your gift reaches the cause.'"
+msgstr ""
+
+#. Description of the 'Amount' (Currency) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Donor-stated amount that goes to the cause. Stripe is charged this plus Fee Recovered when the donor opts in."
+msgstr ""
+
+#. Label of a Card Break in the Frappe Giving Workspace
+#: frappe_giving/frappe_giving/workspace/frappe_giving/frappe_giving.json
+msgid "Donors"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Donation'
+#. Option for the 'Status' (Select) field in DocType 'Donation Campaign'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+msgid "Draft"
+msgstr ""
+
+#. Label of the erp_item (Link) field in DocType 'Donation Campaign'
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+msgid "ERP Item"
+msgstr ""
+
+#. Description of the 'Customer' (Link) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "ERPNext Customer record – required for Sales Invoice generation."
+msgstr ""
+
+#. Description of the 'Sales Invoice' (Link) field in DocType 'Donation
+#. Payment'
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+msgid "ERPNext Sales Invoice created for this payment cycle."
+msgstr ""
+
+#. Label of the erpnext_subscription (Link) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "ERPNext Subscription"
+msgstr ""
+
+#. Description of the 'ERPNext Subscription' (Link) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "ERPNext Subscription that generates Sales Invoices on cadence for Direct Payment recurring donations (mailed checks, ACH outside Stripe)."
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/donation/donation.py:296
+msgid "ERPNext Subscription {0} created for recurring donation"
+msgstr ""
+
+#. Label of the email (Data) field in DocType 'Donor'
+#. Option for the 'Preferred Communication' (Select) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Email"
+msgstr ""
+
+#. Label of the email_template_first (Link) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Email Template First Time"
+msgstr ""
+
+#. Label of the email_template_recurring (Link) field in DocType 'Campaign
+#. Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Email Template Recurring"
+msgstr ""
+
+#. Description of the 'Show Email' (Check) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Email is always required. This toggle is locked on."
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.js:51
+msgid "Embed in a Markdown / sanitized block"
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.js:12
+msgid "Embed snippet copied to clipboard"
+msgstr ""
+
+#. Label of the end_date (Date) field in DocType 'Donation Campaign'
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+msgid "End Date"
+msgstr ""
+
+#. Label of the exchange_rate (Float) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Exchange Rate (to USD)"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Donation'
+#. Option for the 'Status' (Select) field in DocType 'Donation Payment'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+msgid "Failed"
+msgstr ""
+
+#. Label of the fee_recovered (Currency) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Fee Recovered"
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/donation/donation.py:83
+msgid "Fee recovery is enabled on this donation but Frappe Giving Settings is missing 'Item for fee recovery' and/or 'Account for Fee Recovery'. Configure both and try again."
+msgstr ""
+
+#. Label of the field_toggles_section (Section Break) field in DocType
+#. 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Field Toggles"
+msgstr ""
+
+#. Label of the section_break_kogp (Section Break) field in DocType 'Donation
+#. Payment'
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+msgid "Financial"
+msgstr ""
+
+#. Label of the flags_section (Section Break) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Flags"
+msgstr ""
+
+#. Label of the section_break_shhp (Section Break) field in DocType 'Donation
+#. Payment'
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+msgid "Follow-up"
+msgstr ""
+
+#. Description of the 'Payment Intent ID' (Data) field in DocType 'Donation
+#. Payment'
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+msgid "For Stripe: Stripe pi_xxxxx identifier. Used to prevent duplicate webhook processing."
+msgstr ""
+
+#. Description of the 'Sales Invoice' (Link) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "For one-time donations: single invoice created on submit. For recurring: see Donation Payment linked to this donation."
+msgstr ""
+
+#. Label of the form_title (Data) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Form Title"
+msgstr ""
+
+#: frappe_giving/api/donate.py:21 frappe_giving/api/donate.py:100
+#: frappe_giving/api/stripe.py:33
+msgid "Form not found."
+msgstr ""
+
+#. Option for the 'Donor Type' (Select) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Foundation"
+msgstr ""
+
+#. Label of a Desktop Icon
+#. Name of a Workspace
+#: frappe_giving/desktop_icon/frappe_giving.json
+#: frappe_giving/frappe_giving/workspace/frappe_giving/frappe_giving.json
+msgid "Frappe Giving"
+msgstr ""
+
+#. Name of a DocType
+#: frappe_giving/frappe_giving/doctype/frappe_giving_settings/frappe_giving_settings.json
+msgid "Frappe Giving Settings"
+msgstr ""
+
+#. Description of the 'User' (Link) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Frappe website user – required for portal access. Created automatically on first donation if donor registers."
+msgstr ""
+
+#. Label of the frequency (Select) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Frequency"
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/donation/donation.py:322
+msgid "Frequency {0} is not supported for recurring subscriptions."
+msgstr ""
+
+#: frappe_giving/stripe_helpers.py:219
+msgid "Frequency {0} is not supported for recurring."
+msgstr ""
+
+#. Description of the 'Show Full Name' (Check) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Full name is always required. This toggle is locked on."
+msgstr ""
+
+#. Label of the gate_subscription_id (Data) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Gateway Subscription ID"
+msgstr ""
+
+#. Description of the 'Payment Gateway' (Link) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Gateway used for this donation."
+msgstr ""
+
+#. Description of the 'Payment Platforms' (Table) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Gateway-specific customer identifiers. Supports multiple gateways (Stripe, PayPal, etc.) without schema changes."
+msgstr ""
+
+#. Label of the giving_levels_section (Section Break) field in DocType
+#. 'Campaign Form'
+#. Label of the giving_levels (Table) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Giving Levels"
+msgstr ""
+
+#. Label of the giving_logo (Attach Image) field in DocType 'Frappe Giving
+#. Settings'
+#: frappe_giving/frappe_giving/doctype/frappe_giving_settings/frappe_giving_settings.json
+msgid "Giving Portal Logo"
+msgstr ""
+
+#. Label of a Link in the Frappe Giving Workspace
+#: frappe_giving/frappe_giving/workspace/frappe_giving/frappe_giving.json
+msgid "Giving Settings"
+msgstr ""
+
+#. Label of the goal_amount (Currency) field in DocType 'Donation Campaign'
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+msgid "Goal Amount"
+msgstr ""
+
+#. Label of the goal_section (Section Break) field in DocType 'Donation
+#. Campaign'
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+msgid "Goal and Financial Settings"
+msgstr ""
+
+#. Label of the hero_title (Data) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Hero Title"
+msgstr ""
+
+#: frappe_giving/api/receipts.py:288
+msgid ""
+"Hi {0},\n"
+"\n"
+"Thank you for your support of {1} in {2}. Your consolidated donation statement for the year is attached as a PDF — please keep it for your tax records.\n"
+"\n"
+"You can also access this and previous years' statements anytime through your donor portal."
+msgstr ""
+
+#. Description of the 'Last Statement Emailed (Year)' (Int) field in DocType
+#. 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Idempotence key for the annual statement batch. Set automatically; clear it if you need to force a re-send for that year."
+msgstr ""
+
+#. Label of the identity_section (Section Break) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Identity"
+msgstr ""
+
+#. Label of the image (Attach Image) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Image"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Campaign Form'
+#. Option for the 'Status' (Select) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Inactive"
+msgstr ""
+
+#. Option for the 'Subscription Status' (Select) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Incomplete"
+msgstr ""
+
+#. Option for the 'Donor Type' (Select) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Individual"
+msgstr ""
+
+#. Label of the integrations_section (Section Break) field in DocType 'Campaign
+#. Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Integrations"
+msgstr ""
+
+#. Label of the internal_notes (Small Text) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Internal Notes"
+msgstr ""
+
+#: frappe_giving/api/stripe.py:209
+msgid "Invalid Stripe webhook payload."
+msgstr ""
+
+#: frappe_giving/api/receipts.py:116
+msgid "Invalid or expired receipt link."
+msgstr ""
+
+#: frappe_giving/api/portal.py:185
+msgid "Invalid pagination parameters."
+msgstr ""
+
+#: frappe_giving/api/portal.py:64 frappe_giving/api/portal.py:192
+#: frappe_giving/api/portal.py:253 frappe_giving/api/receipts.py:157
+msgid "Invalid year."
+msgstr ""
+
+#. Label of the invoice_date (Date) field in DocType 'Donation Payment'
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+msgid "Invoice date"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Invoiced"
+msgstr ""
+
+#. Label of the item_fee_recovery (Link) field in DocType 'Frappe Giving
+#. Settings'
+#: frappe_giving/frappe_giving/doctype/frappe_giving_settings/frappe_giving_settings.json
+msgid "Item for fee recovery"
+msgstr ""
+
+#. Label of the label (Data) field in DocType 'Campaign Form Giving Level'
+#: frappe_giving/frappe_giving/doctype/campaign_form_giving_level/campaign_form_giving_level.json
+msgid "Label"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Lapsed"
+msgstr ""
+
+#. Label of the last_statement_emailed_year (Int) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Last Statement Emailed (Year)"
+msgstr ""
+
+#. Label of the enable_live_mode (Check) field in DocType 'Frappe Giving
+#. Settings'
+#: frappe_giving/frappe_giving/doctype/frappe_giving_settings/frappe_giving_settings.json
+msgid "Live Mode"
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.js:92
+msgid "Loader script copied to clipboard"
+msgstr ""
+
+#. Label of the manual_section (Section Break) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Manual Donation"
+msgstr ""
+
+#. Description of the 'Subscription Status' (Select) field in DocType
+#. 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Mirror of Stripe subscription state. Updated by webhook – do not edit manually."
+msgstr ""
+
+#: frappe_giving/api/stripe.py:204
+msgid "Missing Stripe-Signature header."
+msgstr ""
+
+#: frappe_giving/api/receipts.py:109
+msgid "Missing donation reference."
+msgstr ""
+
+#. Option for the 'Frequency' (Select) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Monthly"
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.js:91
+msgid "Mount div copied to clipboard"
+msgstr ""
+
+#: frappe_giving/api/donate.py:116 frappe_giving/api/stripe.py:49
+msgid "Name and email are required."
+msgstr ""
+
+#: frappe_giving/api/donate.py:168
+msgid "No Company configured in ERPNext."
+msgstr ""
+
+#: frappe_giving/api/portal.py:69 frappe_giving/api/receipts.py:176
+msgid "No confirmed donations found for {0}."
+msgstr ""
+
+#: frappe_giving/api/portal.py:23
+msgid "No donor record is linked to your account."
+msgstr ""
+
+#: frappe_giving/api/receipts.py:316
+msgid "No donor record linked to your account."
+msgstr ""
+
+#. Label of the notes (Text) field in DocType 'Donation Payment'
+#. Label of the notes_section (Section Break) field in DocType 'Donor'
+#. Label of the notes (Small Text) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Notes"
+msgstr ""
+
+#. Description of the 'Show Fee Recovery' (Select) field in DocType 'Campaign
+#. Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Off (empty) hides the fee-recovery option. Currency shows the surcharge as a dollar amount; Percentage shows it as an effective percentage of the donation. Numbers come from Frappe Giving Settings."
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.js:73
+msgid "On the Web Page record (<code>/app/web-page/&lt;your-page&gt;</code>), tick <b>Insert Code</b>, then paste this into the <b>Javascript</b> field. The script loads the widget bundle on demand and is idempotent — duplicates are safely ignored."
+msgstr ""
+
+#. Option for the 'Frequency' (Select) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "One-Time"
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.py:14
+msgid "Only one giving level can be marked as default."
+msgstr ""
+
+#: frappe_giving/stripe_helpers.py:47
+msgid "Open Frappe Giving Settings ({0}) and select which Stripe Settings record to use."
+msgstr ""
+
+#. Option for the 'Donor Default' (Select) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Opt-in"
+msgstr ""
+
+#. Description of the 'Donor Default' (Select) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Opt-in: checkbox starts unchecked. Opt-out: checkbox starts checked."
+msgstr ""
+
+#. Option for the 'Donor Default' (Select) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Opt-out"
+msgstr ""
+
+#. Description of the 'Donor Note' (Small Text) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Optional message submitted by the donor via the portal."
+msgstr ""
+
+#. Description of the 'Label' (Data) field in DocType 'Campaign Form Giving
+#. Level'
+#: frappe_giving/frappe_giving/doctype/campaign_form_giving_level/campaign_form_giving_level.json
+msgid "Optional text shown next to the amount (e.g. 'Feeds one family for a month')."
+msgstr ""
+
+#. Option for the 'Donor Type' (Select) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Organization"
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.js:15
+msgid "Other Embed Instructions"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Paid"
+msgstr ""
+
+#. Option for the 'Subscription Status' (Select) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Paused"
+msgstr ""
+
+#. Label of the payment_gateway (Link) field in DocType 'Donation'
+#. Label of the payment_gateway (Link) field in DocType 'Donation Campaign'
+#. Label of the payment_gateway (Link) field in DocType 'Donor Payment
+#. Platform'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+#: frappe_giving/frappe_giving/doctype/donor_payment_platform/donor_payment_platform.json
+msgid "Payment Gateway"
+msgstr ""
+
+#. Label of a Link in the Frappe Giving Workspace
+#: frappe_giving/frappe_giving/workspace/frappe_giving/frappe_giving.json
+msgid "Payment Gateways"
+msgstr ""
+
+#. Label of the stripe_payment_intent_id (Data) field in DocType 'Donation
+#. Payment'
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+msgid "Payment Intent ID"
+msgstr ""
+
+#: frappe_giving/api/stripe.py:167
+msgid "Payment Intent does not belong to this donation."
+msgstr ""
+
+#. Label of the payment_platforms_section (Section Break) field in DocType
+#. 'Donor'
+#. Label of the payment_platforms (Table) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Payment Platforms"
+msgstr ""
+
+#: frappe_giving/api/stripe.py:173
+msgid "Payment has not yet succeeded. Stripe status: {0}"
+msgstr ""
+
+#. Description of the 'Processor Fixed Fee' (Currency) field in DocType 'Frappe
+#. Giving Settings'
+#: frappe_giving/frappe_giving/doctype/frappe_giving_settings/frappe_giving_settings.json
+msgid "Per-transaction fixed fee in the campaign currency, e.g. 0.40."
+msgstr ""
+
+#. Option for the 'Show Fee Recovery' (Select) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Percentage"
+msgstr ""
+
+#. Option for the 'Preferred Communication' (Select) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Phone"
+msgstr ""
+
+#. Description of the 'Gateway Subscription ID' (Data) field in DocType
+#. 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Populated automatically for recurring donations. Stripe sub_xxxxx identifier."
+msgstr ""
+
+#. Option for the 'Donation Via' (Select) field in DocType 'Donation Campaign'
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+msgid "Portal"
+msgstr ""
+
+#. Option for the 'Preferred Communication' (Select) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Post"
+msgstr ""
+
+#. Label of the preferred_communication (Select) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Preferred Communication"
+msgstr ""
+
+#. Description of the 'Default' (Check) field in DocType 'Campaign Form Giving
+#. Level'
+#: frappe_giving/frappe_giving/doctype/campaign_form_giving_level/campaign_form_giving_level.json
+msgid "Preselected on form load. Only one row should be marked default."
+msgstr ""
+
+#. Label of the presentation_section (Section Break) field in DocType 'Campaign
+#. Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Presentation"
+msgstr ""
+
+#. Description of the 'Alternate Email' (Data) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Previous or secondary email address. Useful when a donor changes email."
+msgstr ""
+
+#. Label of the processed_donation_section (Section Break) field in DocType
+#. 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Processed Donation"
+msgstr ""
+
+#. Label of the date (Date) field in DocType 'Donation Payment'
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+msgid "Processing Date"
+msgstr ""
+
+#. Label of the fee_fixed (Currency) field in DocType 'Frappe Giving Settings'
+#: frappe_giving/frappe_giving/doctype/frappe_giving_settings/frappe_giving_settings.json
+msgid "Processor Fixed Fee"
+msgstr ""
+
+#. Label of the fee_percentage (Float) field in DocType 'Frappe Giving
+#. Settings'
+#: frappe_giving/frappe_giving/doctype/frappe_giving_settings/frappe_giving_settings.json
+msgid "Processor Percentage"
+msgstr ""
+
+#. Description of the 'Processor Percentage' (Float) field in DocType 'Frappe
+#. Giving Settings'
+#: frappe_giving/frappe_giving/doctype/frappe_giving_settings/frappe_giving_settings.json
+msgid "Processor percentage rate, e.g. 2.5 for 2.5%."
+msgstr ""
+
+#. Description of the 'Hero Title' (Data) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Prominent heading on the public form. Can differ from the campaign name."
+msgstr ""
+
+#. Option for the 'Frequency' (Select) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Quarterly"
+msgstr ""
+
+#. Description of the 'Exchange Rate (to USD)' (Float) field in DocType
+#. 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Rate against USD (functional currency). Fetch from ERPNext Currency Exchange or enter manually."
+msgstr ""
+
+#. Label of the receipt_sent (Check) field in DocType 'Donation Payment'
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+msgid "Receipt sent"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Donation'
+#. Option for the 'Status' (Select) field in DocType 'Donation Payment'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+msgid "Refunded"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Donor Payment Platform'
+#: frappe_giving/frappe_giving/doctype/donor_payment_platform/donor_payment_platform.json
+msgid "Revoked"
+msgstr ""
+
+#. Label of the sales_invoice (Link) field in DocType 'Donation'
+#. Label of the sales_invoice (Link) field in DocType 'Donation Payment'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+msgid "Sales Invoice"
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/donation/donation.py:139
+msgid "Sales Invoice {0} created"
+msgstr ""
+
+#. Label of a Link in the Frappe Giving Workspace
+#: frappe_giving/frappe_giving/workspace/frappe_giving/frappe_giving.json
+msgid "Sales Invoices"
+msgstr ""
+
+#. Label of the send_annual_statement (Check) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Send Annual Statement"
+msgstr ""
+
+#. Label of a Card Break in the Frappe Giving Workspace
+#: frappe_giving/frappe_giving/workspace/frappe_giving/frappe_giving.json
+msgid "Settings"
+msgstr ""
+
+#. Label of the show_address (Check) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Show Address"
+msgstr ""
+
+#. Label of the show_donor_note (Check) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Show Donor Note"
+msgstr ""
+
+#. Label of the show_email (Check) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Show Email"
+msgstr ""
+
+#. Label of the fee_recovery_display (Select) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Show Fee Recovery"
+msgstr ""
+
+#. Label of the show_full_name (Check) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Show Full Name"
+msgstr ""
+
+#. Label of the show_phone (Check) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Show Phone"
+msgstr ""
+
+#. Description of the 'Thank You Message' (Text Editor) field in DocType
+#. 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Shown after the donor submits the form."
+msgstr ""
+
+#. Description of the 'Stripe Webhook Secret' (Password) field in DocType
+#. 'Frappe Giving Settings'
+#: frappe_giving/frappe_giving/doctype/frappe_giving_settings/frappe_giving_settings.json
+msgid "Signing secret from the Stripe Dashboard webhook endpoint (whsec_...). Required for webhook verification."
+msgstr ""
+
+#. Description of the 'Internal Notes' (Small Text) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Staff only – not visible to donor."
+msgstr ""
+
+#. Description of the 'Welcome Email Sent At' (Datetime) field in DocType
+#. 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Stamped when the first-donation welcome email is sent. Subsequent successful payments trigger the shorter thank-you email instead. Clear to force a fresh welcome on the next charge."
+msgstr ""
+
+#. Label of the start_date (Date) field in DocType 'Donation Campaign'
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+msgid "Start Date"
+msgstr ""
+
+#. Label of the status (Select) field in DocType 'Campaign Form'
+#. Label of the status (Select) field in DocType 'Donation'
+#. Label of the status (Select) field in DocType 'Donation Campaign'
+#. Label of the status (Select) field in DocType 'Donation Payment'
+#. Label of the status (Select) field in DocType 'Donor'
+#. Label of the status (Select) field in DocType 'Donor Payment Platform'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+#: frappe_giving/frappe_giving/doctype/donor_payment_platform/donor_payment_platform.json
+msgid "Status"
+msgstr ""
+
+#. Label of the stripe_section (Section Break) field in DocType 'Frappe Giving
+#. Settings'
+#: frappe_giving/frappe_giving/doctype/frappe_giving_settings/frappe_giving_settings.json
+msgid "Stripe"
+msgstr ""
+
+#. Label of the stripe_product_id (Data) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Stripe Product ID"
+msgstr ""
+
+#. Label of the stripe_settings (Link) field in DocType 'Frappe Giving
+#. Settings'
+#: frappe_giving/frappe_giving/doctype/frappe_giving_settings/frappe_giving_settings.json
+msgid "Stripe Settings"
+msgstr ""
+
+#: frappe_giving/stripe_helpers.py:59
+msgid "Stripe Settings {0} is missing the secret key."
+msgstr ""
+
+#. Label of the stripe_webhook_secret (Password) field in DocType 'Frappe
+#. Giving Settings'
+#: frappe_giving/frappe_giving/doctype/frappe_giving_settings/frappe_giving_settings.json
+msgid "Stripe Webhook Secret"
+msgstr ""
+
+#: frappe_giving/api/stripe.py:127
+msgid "Stripe did not return a payment intent for the subscription."
+msgstr ""
+
+#: frappe_giving/stripe_helpers.py:74
+msgid "Stripe webhook secret is not configured."
+msgstr ""
+
+#: frappe_giving/api/stripe.py:216
+msgid "Stripe webhook signature verification failed."
+msgstr ""
+
+#. Label of the subscription_status (Select) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Subscription Status"
+msgstr ""
+
+#. Label of the subtitle (Small Text) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Subtitle"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Donation Payment'
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+msgid "Succeeded"
+msgstr ""
+
+#. Description of the 'Giving Levels' (Table) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Suggested donation amounts shown on the form."
+msgstr ""
+
+#. Description of the 'Anonymous' (Check) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Suppress donor name in public reports."
+msgstr ""
+
+#. Description of the 'Anonymous Donor' (Check) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Suppress donor name in public-facing reports and acknowledgments."
+msgstr ""
+
+#. Description of the 'Fee Recovered' (Currency) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Surcharge added to the Stripe charge so the cause nets the full Amount."
+msgstr ""
+
+#. Name of a role
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+#: frappe_giving/frappe_giving/doctype/donation_campaign/donation_campaign.json
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+#: frappe_giving/frappe_giving/doctype/frappe_giving_settings/frappe_giving_settings.json
+msgid "System Manager"
+msgstr ""
+
+#. Label of the thank_you_message (Text Editor) field in DocType 'Campaign
+#. Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Thank You Message"
+msgstr ""
+
+#. Description of the 'Customer ID' (Data) field in DocType 'Donor Payment
+#. Platform'
+#: frappe_giving/frappe_giving/doctype/donor_payment_platform/donor_payment_platform.json
+msgid "The customer identifier on the payment gateway side (e.g. Stripe cus_xxxxx)"
+msgstr ""
+
+#. Description of the 'Campaign Form' (Link) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "The form the donor used. Stamped at donation creation; drives per-form receipt-email templates."
+msgstr ""
+
+#: frappe_giving/api/donate.py:26 frappe_giving/api/donate.py:104
+#: frappe_giving/api/stripe.py:37
+msgid "This donation form is not active."
+msgstr ""
+
+#: frappe_giving/api/receipts.py:131
+msgid "This donation is not yet confirmed. Please check back later."
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.js:62
+msgid "This goes inside the Markdown / Embed block where you want the form to appear."
+msgstr ""
+
+#. Label of the fee_recovery_section (Section Break) field in DocType 'Campaign
+#. Form'
+#. Label of the fee_recovery_section (Section Break) field in DocType 'Frappe
+#. Giving Settings'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+#: frappe_giving/frappe_giving/doctype/frappe_giving_settings/frappe_giving_settings.json
+msgid "Transaction Fee Recovery"
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/donation/donation.py:97
+msgid "Transaction fee recovery"
+msgstr ""
+
+#. Label of the type_section (Section Break) field in DocType 'Donation'
+#: frappe_giving/frappe_giving/doctype/donation/donation.json
+msgid "Type & Frequency"
+msgstr ""
+
+#. Label of the exchange_rate (Float) field in DocType 'Donation Payment'
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+msgid "USD Exchange Rate"
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.js:57
+msgid "Use this two-part approach when the host page's editor strips <code>&lt;script&gt;</code> and <code>&lt;link&gt;</code> tags — for example, the <b>Section with Embed</b> Web Template (Markdown), or any Markdown content area."
+msgstr ""
+
+#. Description of the 'Form Title' (Data) field in DocType 'Campaign Form'
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.json
+msgid "Used as the unique identifier and URL slug for this form."
+msgstr ""
+
+#. Label of the user (Link) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "User"
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/donor/donor.py:37
+msgid "User {0} linked to Donor"
+msgstr ""
+
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.js:5
+msgid "View on Frontend"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Donation Payment'
+#: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
+msgid "Waiting"
+msgstr ""
+
+#. Label of the welcome_email_sent_at (Datetime) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "Welcome Email Sent At"
+msgstr ""
+
+#. Option for the 'Preferred Communication' (Select) field in DocType 'Donor'
+#: frappe_giving/frappe_giving/doctype/donor/donor.json
+msgid "WhatsApp"
+msgstr ""
+
+#. Description of the 'Stripe Settings' (Link) field in DocType 'Frappe Giving
+#. Settings'
+#: frappe_giving/frappe_giving/doctype/frappe_giving_settings/frappe_giving_settings.json
+msgid "Which Stripe Settings record (from the payments app) provides the publishable/secret keys."
+msgstr ""
+
+#: frappe_giving/api/receipts.py:124
+msgid "You do not have permission to access this receipt."
+msgstr ""
+
+#: frappe_giving/api/receipts.py:284
+msgid "Your {0} donation statement from {1}"
+msgstr ""
+
+#: frappe_giving/api/notifications.py:155 frappe_giving/api/receipts.py:268
+msgid "friend"
+msgstr ""
+
+#: frappe_giving/api/notifications.py:152 frappe_giving/api/receipts.py:265
+msgid "our organisation"
+msgstr ""
+

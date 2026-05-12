@@ -16,18 +16,22 @@ import frappe
 from frappe.utils import cint
 
 
+# Signature mirrors Frappe's Dashboard Chart Source contract — every kwarg
+# comes from frappe.desk.doctype.dashboard_chart.dashboard_chart.get and is
+# passed through as raw HTTP-decoded values, so the broad `str | None`
+# typing is intentional. The body only consumes `chart_name` and `refresh`.
 @frappe.whitelist()
 def get(
-    chart_name=None,
-    chart=None,
-    no_cache=None,
-    filters=None,
-    from_date=None,
-    to_date=None,
-    timespan=None,
-    time_interval=None,
-    heatmap_year=None,
-    refresh=None,
+    chart_name: str | None = None,
+    chart: str | None = None,
+    no_cache: int | str | None = None,
+    filters: str | None = None,
+    from_date: str | None = None,
+    to_date: str | None = None,
+    timespan: str | None = None,
+    time_interval: str | None = None,
+    heatmap_year: int | str | None = None,
+    refresh: int | str | None = None,
 ):
     # Cache by hand instead of using `@cache_source`. The stock decorator
     # also writes `last_synced_on` back to the Dashboard Chart row — under

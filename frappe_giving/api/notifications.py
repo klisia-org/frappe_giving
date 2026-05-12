@@ -88,7 +88,10 @@ def send_donation_receipt_email(donation_payment_name: str) -> None:
         template = frappe.db.get_value(
             "Email Template", template_name, ["subject", "response"], as_dict=True
         )
+        # Email Template content is admin-authored (System Manager role by default).
+        # nosemgrep: frappe-ssti
         subject = frappe.render_template(template.subject, context)
+        # nosemgrep: frappe-ssti
         message = frappe.render_template(template.response, context)
 
         frappe.sendmail(

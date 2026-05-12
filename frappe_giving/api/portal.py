@@ -47,7 +47,7 @@ def get_donor_profile() -> dict | None:
 
 
 @frappe.whitelist()
-def email_yearly_statement_to_self(year) -> dict:
+def email_yearly_statement_to_self(year: int | str) -> dict:
     """Donor-triggered re-send of their own yearly statement PDF.
 
     Sends to whatever email is on file for the donor. Used by the

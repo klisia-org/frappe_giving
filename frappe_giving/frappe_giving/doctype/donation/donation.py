@@ -4,7 +4,10 @@ from frappe.model.document import Document
 from frappe.utils import add_days, nowdate
 
 
-class Donation(Document):
+# `self.sales_invoice` is persisted via `frappe.db.set_value` in
+# `_create_sales_invoice`; the subsequent `self.sales_invoice = si.name` only
+# keeps the in-memory doc in sync.
+class Donation(Document):  # nosemgrep: frappe-modifying-but-not-comitting-other-method
     def validate(self):
         self._compute_amount_usd()
 

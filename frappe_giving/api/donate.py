@@ -2,7 +2,8 @@ import frappe
 from frappe import _
 
 
-@frappe.whitelist(allow_guest=True)
+# Guest-accessible: public branding (logo only), no PII.
+@frappe.whitelist(allow_guest=True)  # nosemgrep: guest-whitelisted-method
 def get_branding():
     return {
         "giving_logo": frappe.db.get_single_value(
@@ -12,8 +13,10 @@ def get_branding():
     }
 
 
-@frappe.whitelist(allow_guest=True)
-def get_campaign_form(form_name):
+# Guest-accessible: donate landing pages render before login; reads public
+# Campaign Form fields only and throws on inactive forms.
+@frappe.whitelist(allow_guest=True)  # nosemgrep: guest-whitelisted-method
+def get_campaign_form(form_name: str):
     if not frappe.db.exists("Campaign Form", form_name):
         frappe.throw(_("Form not found."), frappe.DoesNotExistError)
 
@@ -82,8 +85,17 @@ def get_default_form_name() -> str | None:
     return frappe.db.get_value("Campaign Form", {"status": "Active"}, "name")
 
 
+# Guest-accessible: anonymous donors must reach the non-Stripe donation entry
+# point. Donor identity captured from posted form; amount and form validated
+# server-side.
+# nosemgrep: guest-whitelisted-method
 @frappe.whitelist(allow_guest=True, methods=["POST"])
-def create_draft_donation(form_name, amount, frequency, donor_data):
+def create_draft_donation(
+    form_name: str,
+    amount: float | str,
+    frequency: str,
+    donor_data: dict | str,
+):
     if not frappe.db.exists("Campaign Form", form_name):
         frappe.throw(_("Form not found."), frappe.DoesNotExistError)
 
