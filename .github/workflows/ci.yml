@@ -56,3 +56,32 @@ jobs:
 
       - name: Build (SPA + widget)
         run: yarn build
+
+  semgrep:
+    name: Semgrep (Frappe rules)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+
+      - name: Install semgrep
+        run: pip install semgrep
+
+      - name: Download Frappe Semgrep rules
+        run: git clone --depth 1 https://github.com/frappe/semgrep-rules.git frappe-semgrep-rules
+
+      - name: Run Semgrep
+        run: |
+          semgrep \
+            --config ./frappe-semgrep-rules/rules \
+            --exclude node_modules \
+            --exclude .history \
+            --exclude frappe_giving/public/frontend \
+            --exclude frappe_giving/builder_files \
+            --exclude scripts \
+            --error \
+            --metrics=off

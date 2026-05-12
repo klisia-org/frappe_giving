@@ -14,12 +14,12 @@ required_apps = ["erpnext"]
 
 # Each item in the list will be shown as an app in the apps page
 add_to_apps_screen = [
-    {
-        "name": "frappe_giving",
-        "logo": "/assets/frappe_giving/images/frappe_giving.png",
-        "title": "Frappe Giving",
-        "route": "/app/frappe-giving",
-    }
+	{
+		"name": "frappe_giving",
+		"logo": "/assets/frappe_giving/images/frappe_giving.png",
+		"title": "Frappe Giving",
+		"route": "/app/frappe-giving",
+	}
 ]
 
 # Includes in <head>
@@ -64,7 +64,7 @@ add_to_apps_screen = [
 # Donors landing on `/` (e.g. via login redirect or "Login with email link")
 # go straight to the donor portal SPA instead of trying to hit Desk.
 role_home_page = {
-    "Donor": "/donate/donorportal",
+	"Donor": "/donate/donorportal",
 }
 
 # Generators
@@ -127,14 +127,14 @@ after_install = "frappe_giving.install.after_install"
 # bypass role) can only see their own Donor record, their Donations, and
 # the Donation Payments attached to those Donations.
 permission_query_conditions = {
-    "Donor": "frappe_giving.donor_permissions.donor_query_conditions",
-    "Donation": "frappe_giving.donor_permissions.donation_query_conditions",
-    "Donation Payment": "frappe_giving.donor_permissions.donation_payment_query_conditions",
+	"Donor": "frappe_giving.donor_permissions.donor_query_conditions",
+	"Donation": "frappe_giving.donor_permissions.donation_query_conditions",
+	"Donation Payment": "frappe_giving.donor_permissions.donation_payment_query_conditions",
 }
 has_permission = {
-    "Donor": "frappe_giving.donor_permissions.donor_has_permission",
-    "Donation": "frappe_giving.donor_permissions.donation_has_permission",
-    "Donation Payment": "frappe_giving.donor_permissions.donation_payment_has_permission",
+	"Donor": "frappe_giving.donor_permissions.donor_has_permission",
+	"Donation": "frappe_giving.donor_permissions.donation_has_permission",
+	"Donation Payment": "frappe_giving.donor_permissions.donation_payment_has_permission",
 }
 
 # Document Events
@@ -142,28 +142,28 @@ has_permission = {
 # Hook on document methods and events
 
 doc_events = {
-    "Sales Invoice": {
-        "on_submit": "frappe_giving.signals.sales_invoice.on_submit",
-    },
-    "Payment Entry": {
-        "on_submit": "frappe_giving.signals.payment_entry.on_submit",
-    },
+	"Sales Invoice": {
+		"on_submit": "frappe_giving.signals.sales_invoice.on_submit",
+	},
+	"Payment Entry": {
+		"on_submit": "frappe_giving.signals.payment_entry.on_submit",
+	},
 }
 
 # Scheduled Tasks
 # ---------------
 
 scheduler_events = {
-    "cron": {
-        # Jan 5, 08:00 site-local. The 5-day buffer past Dec 31 lets late
-        # Stripe renewals and webhook backfills settle before the batch
-        # snapshots the year. Idempotent — `last_statement_emailed_year`
-        # on Donor prevents accidental re-sends if the cron also fires
-        # manually.
-        "0 8 5 1 *": [
-            "frappe_giving.tasks.send_annual_statements",
-        ],
-    },
+	"cron": {
+		# Jan 5, 08:00 site-local. The 5-day buffer past Dec 31 lets late
+		# Stripe renewals and webhook backfills settle before the batch
+		# snapshots the year. Idempotent — `last_statement_emailed_year`
+		# on Donor prevents accidental re-sends if the cron also fires
+		# manually.
+		"0 8 5 1 *": [
+			"frappe_giving.tasks.send_annual_statements",
+		],
+	},
 }
 
 # Testing
@@ -257,15 +257,15 @@ scheduler_events = {
 
 
 website_route_rules = [
-    # The donor portal is a nested SPA route (/donate/donorportal,
-    # /donate/donorportal/history, /donate/donorportal/receipts), so we
-    # need a path-converter rule to hand every subpath to the same
-    # donate.html entry. This specific prefix keeps the generic
-    # single-segment `<form_name>` rule below untouched so Builder pages
-    # under `/donate/*` still resolve through Frappe's regular routing.
-    {"from_route": "/donate/donorportal", "to_route": "donate"},
-    {"from_route": "/donate/donorportal/<path:subpath>", "to_route": "donate"},
-    # Single-segment match for campaign forms.
-    {"from_route": "/donate/<form_name>", "to_route": "donate"},
-    {"from_route": "/donate", "to_route": "donate"},
+	# The donor portal is a nested SPA route (/donate/donorportal,
+	# /donate/donorportal/history, /donate/donorportal/receipts), so we
+	# need a path-converter rule to hand every subpath to the same
+	# donate.html entry. This specific prefix keeps the generic
+	# single-segment `<form_name>` rule below untouched so Builder pages
+	# under `/donate/*` still resolve through Frappe's regular routing.
+	{"from_route": "/donate/donorportal", "to_route": "donate"},
+	{"from_route": "/donate/donorportal/<path:subpath>", "to_route": "donate"},
+	# Single-segment match for campaign forms.
+	{"from_route": "/donate/<form_name>", "to_route": "donate"},
+	{"from_route": "/donate", "to_route": "donate"},
 ]

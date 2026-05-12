@@ -10,25 +10,23 @@ import frappe
 
 
 def execute():
-    if not frappe.db.exists("Role", "Donor"):
-        frappe.get_doc(
-            {
-                "doctype": "Role",
-                "role_name": "Donor",
-                "desk_access": 0,
-                "disabled": 0,
-            }
-        ).insert(ignore_permissions=True)
+	if not frappe.db.exists("Role", "Donor"):
+		frappe.get_doc(
+			{
+				"doctype": "Role",
+				"role_name": "Donor",
+				"desk_access": 0,
+				"disabled": 0,
+			}
+		).insert(ignore_permissions=True)
 
-    donor_users = frappe.db.sql_list(
-        "SELECT user FROM `tabDonor` WHERE user IS NOT NULL AND user != ''"
-    )
-    for user_name in donor_users:
-        if not frappe.db.exists("User", user_name):
-            continue
-        user = frappe.get_doc("User", user_name)
-        existing = {r.role for r in (user.roles or [])}
-        if "Donor" in existing:
-            continue
-        user.append("roles", {"role": "Donor"})
-        user.save(ignore_permissions=True)
+	donor_users = frappe.db.sql_list("SELECT user FROM `tabDonor` WHERE user IS NOT NULL AND user != ''")
+	for user_name in donor_users:
+		if not frappe.db.exists("User", user_name):
+			continue
+		user = frappe.get_doc("User", user_name)
+		existing = {r.role for r in (user.roles or [])}
+		if "Donor" in existing:
+			continue
+		user.append("roles", {"role": "Donor"})
+		user.save(ignore_permissions=True)

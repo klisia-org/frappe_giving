@@ -17,86 +17,86 @@ BYPASS_ROLES = {"System Manager", "Accounts Manager", "Accounts User"}
 
 
 def _current_donor(user: str) -> str | None:
-    return frappe.db.get_value("Donor", {"user": user}, "name")
+	return frappe.db.get_value("Donor", {"user": user}, "name")
 
 
 def _should_restrict(user: str) -> bool:
-    if not user or user == "Administrator":
-        return False
-    roles = set(frappe.get_roles(user))
-    if roles & BYPASS_ROLES:
-        return False
-    return bool(_current_donor(user))
+	if not user or user == "Administrator":
+		return False
+	roles = set(frappe.get_roles(user))
+	if roles & BYPASS_ROLES:
+		return False
+	return bool(_current_donor(user))
 
 
 # ---------------------------------------------------------------------------
 # Donation
 # ---------------------------------------------------------------------------
 def donation_has_permission(doc, ptype, user):
-    if not user:
-        user = frappe.session.user
-    if not _should_restrict(user):
-        return True
-    return getattr(doc, "donor", None) == _current_donor(user)
+	if not user:
+		user = frappe.session.user
+	if not _should_restrict(user):
+		return True
+	return getattr(doc, "donor", None) == _current_donor(user)
 
 
 def donation_query_conditions(user):
-    if not user:
-        user = frappe.session.user
-    if not _should_restrict(user):
-        return ""
-    donor = _current_donor(user)
-    if not donor:
-        return "1=0"
-    return f"(`tabDonation`.donor = {frappe.db.escape(donor)})"
+	if not user:
+		user = frappe.session.user
+	if not _should_restrict(user):
+		return ""
+	donor = _current_donor(user)
+	if not donor:
+		return "1=0"
+	return f"(`tabDonation`.donor = {frappe.db.escape(donor)})"
 
 
 # ---------------------------------------------------------------------------
 # Donor
 # ---------------------------------------------------------------------------
 def donor_has_permission(doc, ptype, user):
-    if not user:
-        user = frappe.session.user
-    if not _should_restrict(user):
-        return True
-    return getattr(doc, "name", None) == _current_donor(user)
+	if not user:
+		user = frappe.session.user
+	if not _should_restrict(user):
+		return True
+	return getattr(doc, "name", None) == _current_donor(user)
 
 
 def donor_query_conditions(user):
-    if not user:
-        user = frappe.session.user
-    if not _should_restrict(user):
-        return ""
-    donor = _current_donor(user)
-    if not donor:
-        return "1=0"
-    return f"(`tabDonor`.name = {frappe.db.escape(donor)})"
+	if not user:
+		user = frappe.session.user
+	if not _should_restrict(user):
+		return ""
+	donor = _current_donor(user)
+	if not donor:
+		return "1=0"
+	return f"(`tabDonor`.name = {frappe.db.escape(donor)})"
 
 
 # ---------------------------------------------------------------------------
 # Donation Payment (child of Donation, filter by parent.donor)
 # ---------------------------------------------------------------------------
 def donation_payment_has_permission(doc, ptype, user):
-    if not user:
-        user = frappe.session.user
-    if not _should_restrict(user):
-        return True
-    donor = _current_donor(user)
-    parent_donor = frappe.db.get_value("Donation", doc.donation, "donor")
-    return parent_donor == donor
+	if not user:
+		user = frappe.session.user
+	if not _should_restrict(user):
+		return True
+	donor = _current_donor(user)
+	parent_donor = frappe.db.get_value("Donation", doc.donation, "donor")
+	return parent_donor == donor
 
 
 def donation_payment_query_conditions(user):
-    if not user:
-        user = frappe.session.user
-    if not _should_restrict(user):
-        return ""
-    donor = _current_donor(user)
-    if not donor:
-        return "1=0"
-    return (
-        f"(`tabDonation Payment`.donation IN ("
-        f"SELECT name FROM `tabDonation` "
-        f"WHERE donor = {frappe.db.escape(donor)}"
-        f"))"
-    )
+	if not user:
+		user = frappe.session.user
+	if not _should_restrict(user):
+		return ""
+	donor = _current_donor(user)
+	if not donor:
+		return "1=0"
+	return (
+		f"(`tabDonation Payment`.donation IN ("
+		f"SELECT name FROM `tabDonation` "
+		f"WHERE donor = {frappe.db.escape(donor)}"
+		f"))"
+	)

@@ -16,18 +16,13 @@ repos:
       - id: check-ast
         exclude: '.history/.*'
 
-  - repo: https://github.com/psf/black
-    rev: 24.10.0
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.14.5
     hooks:
-      - id: black
+      - id: ruff-check
+        args: ["--fix"]
         exclude: '.history/.*'
-
-  - repo: https://github.com/PyCQA/flake8
-    rev: 7.3.0
-    hooks:
-      - id: flake8
-        additional_dependencies: ["flake8-bugbear"]
-        args: ["--config", ".github/helper/flake8.conf"]
+      - id: ruff-format
         exclude: '.history/.*'
 
   - repo: https://github.com/pycqa/bandit

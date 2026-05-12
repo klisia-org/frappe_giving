@@ -12,7 +12,7 @@ import frappe
 
 
 def execute():
-    if not frappe.db.exists("Role", "Donor"):
-        return
-    if frappe.db.get_value("Role", "Donor", "desk_access") != 0:
-        frappe.db.set_value("Role", "Donor", "desk_access", 0, update_modified=False)
+	if not frappe.db.exists("Role", "Donor"):
+		return
+	if frappe.db.get_value("Role", "Donor", "desk_access") != 0:
+		frappe.db.set_value("Role", "Donor", "desk_access", 0, update_modified=False)

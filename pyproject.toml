@@ -25,7 +25,11 @@ packages = []
 
 [tool.ruff]
 line-length = 110
-target-version = "py314"
+# Note: `requires-python` above is 3.14; ruff's target-version is set one minor
+# lower so the formatter doesn't apply PEP 758 (`except X, Y:` without parens)
+# until older Python parsers in our toolchain (pre-commit check-ast, IDEs)
+# catch up.
+target-version = "py313"
 
 [tool.ruff.lint]
 select = [
@@ -56,6 +60,7 @@ ignore = [
     "UP032", # Use f-string instead of `format` call (translations)
     "UP037", # quoted annotations
     "UP040", # Use type aliases instead of type annotations
+    "RUF001", # ambiguous unicode — en dashes etc. are intentional in user-facing strings
 ]
 typing-modules = ["frappe.types.DF"]
 

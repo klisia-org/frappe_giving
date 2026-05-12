@@ -12,28 +12,28 @@ from frappe_giving.api.notifications import send_donation_receipt_email
 
 
 def on_submit(doc, method=None):
-    for ref in doc.references or []:
-        if ref.reference_doctype != "Sales Invoice":
-            continue
+	for ref in doc.references or []:
+		if ref.reference_doctype != "Sales Invoice":
+			continue
 
-        dp_name = frappe.db.get_value(
-            "Donation Payment",
-            {
-                "sales_invoice": ref.reference_name,
-                "status": "Waiting",
-            },
-            "name",
-        )
-        if not dp_name:
-            continue
+		dp_name = frappe.db.get_value(
+			"Donation Payment",
+			{
+				"sales_invoice": ref.reference_name,
+				"status": "Waiting",
+			},
+			"name",
+		)
+		if not dp_name:
+			continue
 
-        frappe.db.set_value(
-            "Donation Payment",
-            dp_name,
-            {
-                "status": "Succeeded",
-                "date": doc.posting_date,
-            },
-        )
+		frappe.db.set_value(
+			"Donation Payment",
+			dp_name,
+			{
+				"status": "Succeeded",
+				"date": doc.posting_date,
+			},
+		)
 
-        send_donation_receipt_email(dp_name)
+		send_donation_receipt_email(dp_name)

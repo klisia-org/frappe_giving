@@ -9,8 +9,8 @@ Responsibilities:
   Donation name embedded in metadata so webhooks can route back.
 """
 
-import stripe
 import frappe
+import stripe
 from frappe import _
 
 STRIPE_GATEWAY_NAME = "Stripe"
@@ -44,10 +44,9 @@ def _resolve_stripe_settings_name():
 		return records[0]
 
 	frappe.throw(
-		_(
-			"Open Frappe Giving Settings ({0}) and select which Stripe Settings "
-			"record to use."
-		).format("/app/frappe-giving-settings")
+		_("Open Frappe Giving Settings ({0}) and select which Stripe Settings record to use.").format(
+			"/app/frappe-giving-settings"
+		)
 	)
 
 
@@ -141,15 +140,13 @@ def _stripe_payment_gateway_name():
 		if name:
 			return name
 
-	name = frappe.db.get_value(
-		"Payment Gateway", {"gateway_settings": "Stripe Settings"}, "name"
-	)
+	name = frappe.db.get_value("Payment Gateway", {"gateway_settings": "Stripe Settings"}, "name")
 	return name or STRIPE_GATEWAY_NAME
 
 
 def create_payment_intent(amount, currency, customer_id, donation_name, description):
 	get_stripe_client()
-	amount_cents = int(round(float(amount) * 100))
+	amount_cents = round(float(amount) * 100)
 	return stripe.PaymentIntent.create(
 		amount=amount_cents,
 		currency=currency.lower(),
@@ -175,9 +172,7 @@ def _get_or_create_stripe_product(campaign_form_name, description, donation_name
 	     fall back to an ad-hoc Product so the flow still works.
 	"""
 	if campaign_form_name:
-		cached = frappe.db.get_value(
-			"Campaign Form", campaign_form_name, "stripe_product_id"
-		)
+		cached = frappe.db.get_value("Campaign Form", campaign_form_name, "stripe_product_id")
 		if cached:
 			return cached
 
@@ -212,7 +207,7 @@ def create_subscription(
 	campaign_form_name=None,
 ):
 	get_stripe_client()
-	amount_cents = int(round(float(amount) * 100))
+	amount_cents = round(float(amount) * 100)
 
 	interval_config = _FREQUENCY_TO_INTERVAL.get(frequency)
 	if not interval_config:
@@ -251,9 +246,7 @@ def create_subscription(
 	invoice = getattr(sub, "latest_invoice", None)
 	pi = getattr(invoice, "payment_intent", None) if invoice else None
 	if pi:
-		stripe.PaymentIntent.modify(
-			pi.id, metadata={"donation_name": donation_name}
-		)
+		stripe.PaymentIntent.modify(pi.id, metadata={"donation_name": donation_name})
 
 	return sub
 
