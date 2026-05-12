@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: frappe_giving\n"
 "Report-Msgid-Bugs-To: support@klisia.org\n"
-"POT-Creation-Date: 2026-05-12 14:16-0609\n"
-"PO-Revision-Date: 2026-05-12 20:48\n"
+"POT-Creation-Date: 2026-05-12 15:54-0609\n"
+"PO-Revision-Date: 2026-05-12 21:03\n"
 "Last-Translator: support@klisia.org\n"
 "Language-Team: Portuguese, Brazilian\n"
 "MIME-Version: 1.0\n"
@@ -257,7 +257,7 @@ msgstr "Calculado: Valor × Taxa de Câmbio. Usado para relatórios com base em 
 msgid "Contact"
 msgstr "Contato"
 
-#: frappe_giving/frappe_giving/doctype/donor/donor.py:91
+#: frappe_giving/frappe_giving/doctype/donor/donor.py:87
 msgid "Contact {0} created and linked to Donor and Customer"
 msgstr "Contato {0} criado e vinculado ao Doador e ao Cliente"
 
@@ -312,7 +312,7 @@ msgstr "Cliente"
 msgid "Customer ID"
 msgstr "ID do Cliente"
 
-#: frappe_giving/frappe_giving/doctype/donor/donor.py:65
+#: frappe_giving/frappe_giving/doctype/donor/donor.py:61
 msgid "Customer {0} created and linked to Donor"
 msgstr "Cliente {0} criado e vinculado ao Doador"
 
@@ -387,7 +387,7 @@ msgstr "Data da Doação"
 msgid "Donation Payment"
 msgstr "Pagamento de Doação"
 
-#: frappe_giving/frappe_giving/doctype/donation/donation.py:162
+#: frappe_giving/frappe_giving/doctype/donation/donation.py:159
 msgid "Donation Payment {0} created"
 msgstr "Pagamento de Doação {0} criado"
 
@@ -401,7 +401,7 @@ msgstr "Tipo de Doação"
 msgid "Donation Via"
 msgstr "Via de Doação"
 
-#: frappe_giving/api/donate.py:111 frappe_giving/api/stripe.py:44
+#: frappe_giving/api/donate.py:106 frappe_giving/api/stripe.py:44
 msgid "Donation amount must be greater than zero."
 msgstr "O valor da doação deve ser maior que zero."
 
@@ -409,11 +409,11 @@ msgstr "O valor da doação deve ser maior que zero."
 msgid "Donation not found."
 msgstr "Doação não encontrada."
 
-#: frappe_giving/frappe_giving/doctype/donation/donation.py:70
+#: frappe_giving/frappe_giving/doctype/donation/donation.py:69
 msgid "Donation {0} – Campaign: {1}"
 msgstr "Doação {0} – Campanha: {1}"
 
-#: frappe_giving/api/stripe.py:87
+#: frappe_giving/api/stripe.py:85
 msgid "Donation {0} – {1}"
 msgstr "Doação {0} – {1}"
 
@@ -481,7 +481,7 @@ msgstr "Tipo de Doador"
 msgid "Donor opted to cover the processor fee."
 msgstr "O doador optou por cobrir a taxa do processador."
 
-#: frappe_giving/api/receipts.py:243
+#: frappe_giving/api/receipts.py:237
 msgid "Donor {0} has no email on file."
 msgstr "O doador {0} não tem e-mail cadastrado."
 
@@ -489,7 +489,7 @@ msgstr "O doador {0} não tem e-mail cadastrado."
 msgid "Donor {0} has no linked Customer. Please save the Donor record first to auto-create one."
 msgstr "O doador {0} não tem um Cliente vinculado. Salve o registro do Doador primeiro para criar um automaticamente."
 
-#: frappe_giving/frappe_giving/doctype/donation/donation.py:267
+#: frappe_giving/frappe_giving/doctype/donation/donation.py:260
 msgid "Donor {0} has no linked Customer; cannot create an ERPNext Subscription."
 msgstr "O doador {0} não tem um Cliente vinculado; não é possível criar uma Assinatura no ERPNext."
 
@@ -549,7 +549,7 @@ msgstr "Assinatura no ERPNext"
 msgid "ERPNext Subscription that generates Sales Invoices on cadence for Direct Payment recurring donations (mailed checks, ACH outside Stripe)."
 msgstr "Assinatura no ERPNext que gera Faturas de Vendas em cadência para doações recorrentes de Pagamento Direto (cheques enviados, ACH fora do Stripe)."
 
-#: frappe_giving/frappe_giving/doctype/donation/donation.py:296
+#: frappe_giving/frappe_giving/doctype/donation/donation.py:288
 msgid "ERPNext Subscription {0} created for recurring donation"
 msgstr "Assinatura no ERPNext {0} criada para doação recorrente"
 
@@ -605,7 +605,7 @@ msgstr "Com Falha"
 msgid "Fee Recovered"
 msgstr "Taxa Recuperada"
 
-#: frappe_giving/frappe_giving/doctype/donation/donation.py:83
+#: frappe_giving/frappe_giving/doctype/donation/donation.py:80
 msgid "Fee recovery is enabled on this donation but Frappe Giving Settings is missing 'Item for fee recovery' and/or 'Account for Fee Recovery'. Configure both and try again."
 msgstr "A recuperação de taxas está habilitada nesta doação, mas em Configurações do Frappe Giving está faltando 'Item para recuperação de taxas' e/ou 'Conta para Recuperação de Taxas'. Configure ambos e tente novamente."
 
@@ -624,7 +624,7 @@ msgstr "Financeiro"
 #. Label of the flags_section (Section Break) field in DocType 'Donor'
 #: frappe_giving/frappe_giving/doctype/donor/donor.json
 msgid "Flags"
-msgstr "Alertas"
+msgstr "Flags"
 
 #. Label of the section_break_shhp (Section Break) field in DocType 'Donation
 #. Payment'
@@ -648,7 +648,7 @@ msgstr "Para doações únicas: uma única fatura é criada ao submeter. Para re
 msgid "Form Title"
 msgstr "Título do Formulário"
 
-#: frappe_giving/api/donate.py:21 frappe_giving/api/donate.py:100
+#: frappe_giving/api/donate.py:18 frappe_giving/api/donate.py:95
 #: frappe_giving/api/stripe.py:33
 msgid "Form not found."
 msgstr "Formulário não encontrado."
@@ -680,11 +680,11 @@ msgstr "Usuário do site Frappe — necessário para acesso ao portal. Criado au
 msgid "Frequency"
 msgstr "Frequência"
 
-#: frappe_giving/frappe_giving/doctype/donation/donation.py:322
+#: frappe_giving/frappe_giving/doctype/donation/donation.py:312
 msgid "Frequency {0} is not supported for recurring subscriptions."
 msgstr "A frequência {0} não é compatível para assinaturas recorrentes."
 
-#: frappe_giving/stripe_helpers.py:219
+#: frappe_giving/stripe_helpers.py:214
 msgid "Frequency {0} is not supported for recurring."
 msgstr "A frequência {0} não é compatível para recorrência."
 
@@ -742,7 +742,7 @@ msgstr "Meta e Configurações Financeiras"
 msgid "Hero Title"
 msgstr "Título Principal"
 
-#: frappe_giving/api/receipts.py:288
+#: frappe_giving/api/receipts.py:282
 msgid "Hi {0},\n\n"
 "Thank you for your support of {1} in {2}. Your consolidated donation statement for the year is attached as a PDF — please keep it for your tax records.\n\n"
 "You can also access this and previous years' statements anytime through your donor portal."
@@ -794,7 +794,7 @@ msgstr "Integrações"
 msgid "Internal Notes"
 msgstr "Notas Internas"
 
-#: frappe_giving/api/stripe.py:209
+#: frappe_giving/api/stripe.py:205
 msgid "Invalid Stripe webhook payload."
 msgstr "Payload de webhook do Stripe inválido."
 
@@ -802,12 +802,12 @@ msgstr "Payload de webhook do Stripe inválido."
 msgid "Invalid or expired receipt link."
 msgstr "Link de recibo inválido ou expirado."
 
-#: frappe_giving/api/portal.py:185
+#: frappe_giving/api/portal.py:181
 msgid "Invalid pagination parameters."
 msgstr "Parâmetros de paginação inválidos."
 
-#: frappe_giving/api/portal.py:64 frappe_giving/api/portal.py:192
-#: frappe_giving/api/portal.py:253 frappe_giving/api/receipts.py:157
+#: frappe_giving/api/portal.py:64 frappe_giving/api/portal.py:188
+#: frappe_giving/api/portal.py:249 frappe_giving/api/receipts.py:157
 msgid "Invalid year."
 msgstr "Ano inválido."
 
@@ -863,7 +863,7 @@ msgstr "Doação Manual"
 msgid "Mirror of Stripe subscription state. Updated by webhook – do not edit manually."
 msgstr "Espelho do estado da assinatura no Stripe. Atualizado por webhook — não editar manualmente."
 
-#: frappe_giving/api/stripe.py:204
+#: frappe_giving/api/stripe.py:200
 msgid "Missing Stripe-Signature header."
 msgstr "Cabeçalho Stripe-Signature ausente."
 
@@ -880,11 +880,11 @@ msgstr "Mensal"
 msgid "Mount div copied to clipboard"
 msgstr "Div de montagem copiada para a área de transferência"
 
-#: frappe_giving/api/donate.py:116 frappe_giving/api/stripe.py:49
+#: frappe_giving/api/donate.py:111 frappe_giving/api/stripe.py:49
 msgid "Name and email are required."
 msgstr "Nome e e-mail são obrigatórios."
 
-#: frappe_giving/api/donate.py:168
+#: frappe_giving/api/donate.py:163
 msgid "No Company configured in ERPNext."
 msgstr "Nenhuma Empresa configurada no ERPNext."
 
@@ -896,7 +896,7 @@ msgstr "Nenhuma doação confirmada encontrada para {0}."
 msgid "No donor record is linked to your account."
 msgstr "Nenhum registro de doador está vinculado à sua conta."
 
-#: frappe_giving/api/receipts.py:316
+#: frappe_giving/api/receipts.py:309
 msgid "No donor record linked to your account."
 msgstr "Nenhum registro de doador vinculado à sua conta."
 
@@ -923,7 +923,7 @@ msgstr "No registro da Página da Web (<code>/app/web-page/&lt;sua-pagina&gt;</c
 msgid "One-Time"
 msgstr "Única"
 
-#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.py:14
+#: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.py:13
 msgid "Only one giving level can be marked as default."
 msgstr "Apenas um nível de doação pode ser marcado como padrão."
 
@@ -997,7 +997,7 @@ msgstr "Gateways de Pagamento"
 msgid "Payment Intent ID"
 msgstr "ID do Payment Intent"
 
-#: frappe_giving/api/stripe.py:167
+#: frappe_giving/api/stripe.py:165
 msgid "Payment Intent does not belong to this donation."
 msgstr "O Payment Intent não pertence a esta doação."
 
@@ -1008,7 +1008,7 @@ msgstr "O Payment Intent não pertence a esta doação."
 msgid "Payment Platforms"
 msgstr "Plataformas de Pagamento"
 
-#: frappe_giving/api/stripe.py:173
+#: frappe_giving/api/stripe.py:170
 msgid "Payment has not yet succeeded. Stripe status: {0}"
 msgstr "O pagamento ainda não foi concluído. Status no Stripe: {0}"
 
@@ -1134,7 +1134,7 @@ msgstr "Revogado"
 msgid "Sales Invoice"
 msgstr "Fatura de Vendas"
 
-#: frappe_giving/frappe_giving/doctype/donation/donation.py:139
+#: frappe_giving/frappe_giving/doctype/donation/donation.py:136
 msgid "Sales Invoice {0} created"
 msgstr "Fatura de Vendas {0} criada"
 
@@ -1243,7 +1243,7 @@ msgstr "ID do Produto no Stripe"
 msgid "Stripe Settings"
 msgstr "Configurações do Stripe"
 
-#: frappe_giving/stripe_helpers.py:59
+#: frappe_giving/stripe_helpers.py:58
 msgid "Stripe Settings {0} is missing the secret key."
 msgstr "As Configurações do Stripe {0} estão sem a chave secreta."
 
@@ -1253,15 +1253,15 @@ msgstr "As Configurações do Stripe {0} estão sem a chave secreta."
 msgid "Stripe Webhook Secret"
 msgstr "Segredo do Webhook do Stripe"
 
-#: frappe_giving/api/stripe.py:127
+#: frappe_giving/api/stripe.py:125
 msgid "Stripe did not return a payment intent for the subscription."
 msgstr "O Stripe não retornou um payment intent para a assinatura."
 
-#: frappe_giving/stripe_helpers.py:74
+#: frappe_giving/stripe_helpers.py:73
 msgid "Stripe webhook secret is not configured."
 msgstr "O segredo do webhook do Stripe não está configurado."
 
-#: frappe_giving/api/stripe.py:216
+#: frappe_giving/api/stripe.py:212
 msgid "Stripe webhook signature verification failed."
 msgstr "Falha na verificação da assinatura do webhook do Stripe."
 
@@ -1327,7 +1327,7 @@ msgstr "O identificador do cliente no lado do gateway de pagamento (por exemplo,
 msgid "The form the donor used. Stamped at donation creation; drives per-form receipt-email templates."
 msgstr "O formulário que o doador utilizou. Registrado na criação da doação; define os modelos de e-mail de recibo por formulário."
 
-#: frappe_giving/api/donate.py:26 frappe_giving/api/donate.py:104
+#: frappe_giving/api/donate.py:23 frappe_giving/api/donate.py:99
 #: frappe_giving/api/stripe.py:37
 msgid "This donation form is not active."
 msgstr "Este formulário de doação não está ativo."
@@ -1349,7 +1349,7 @@ msgstr "Isto vai dentro do bloco Markdown/Embed onde você quer que o formulári
 msgid "Transaction Fee Recovery"
 msgstr "Recuperação de Taxa de Transação"
 
-#: frappe_giving/frappe_giving/doctype/donation/donation.py:97
+#: frappe_giving/frappe_giving/doctype/donation/donation.py:94
 msgid "Transaction fee recovery"
 msgstr "Recuperação de taxa de transação"
 
@@ -1410,15 +1410,31 @@ msgstr "Qual registro de Configurações do Stripe (do app de pagamentos) fornec
 msgid "You do not have permission to access this receipt."
 msgstr "Você não tem permissão para acessar este recibo."
 
-#: frappe_giving/api/receipts.py:284
+#: frappe_giving/api/receipts.py:278
 msgid "Your {0} donation statement from {1}"
 msgstr "Seu extrato de doações de {0} de {1}"
 
-#: frappe_giving/api/notifications.py:155 frappe_giving/api/receipts.py:268
+#: frappe_giving/workspace_i18n.py:68
+msgid "card_name"
+msgstr "card_name"
+
+#: frappe_giving/workspace_i18n.py:70
+msgid "chart_name"
+msgstr "chart_name"
+
+#: frappe_giving/api/notifications.py:150 frappe_giving/api/receipts.py:262
 msgid "friend"
 msgstr "amigo"
 
-#: frappe_giving/api/notifications.py:152 frappe_giving/api/receipts.py:265
+#: frappe_giving/api/notifications.py:147 frappe_giving/api/receipts.py:259
 msgid "our organisation"
 msgstr "nossa organização"
+
+#: frappe_giving/workspace_i18n.py:66
+msgid "text"
+msgstr "text"
+
+#: frappe_giving/workspace_i18n.py:45
+msgid "title"
+msgstr "title"
 
