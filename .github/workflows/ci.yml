@@ -38,23 +38,43 @@ jobs:
   frontend:
     name: Frontend build
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: frontend
+    # The SPA depends on @seminary/portal-shell via a `link:` to a sibling
+    # directory of frappe_giving. We replicate the dev layout in CI by
+    # checking out frappe_giving and seminary as siblings under the workspace,
+    # then installing portal-shell first so its `postinstall: vite build`
+    # produces the dist that frappe_giving's import resolves against.
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout frappe_giving
+        uses: actions/checkout@v4
+        with:
+          path: frappe_giving
+
+      - name: Checkout seminary (provides @seminary/portal-shell)
+        uses: actions/checkout@v4
+        with:
+          repository: klisia-org/seminary
+          path: seminary
+          ref: main
 
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: yarn
-          cache-dependency-path: frontend/yarn.lock
+          cache-dependency-path: |
+            frappe_giving/frontend/yarn.lock
+            seminary/portal-shell/yarn.lock
 
-      - name: Install dependencies
+      - name: Build @seminary/portal-shell
+        working-directory: seminary/portal-shell
+        run: yarn install --frozen-lockfile
+
+      - name: Install frontend dependencies
+        working-directory: frappe_giving/frontend
         run: yarn install --frozen-lockfile
 
       - name: Build (SPA + widget)
+        working-directory: frappe_giving/frontend
         run: yarn build
 
   semgrep:
