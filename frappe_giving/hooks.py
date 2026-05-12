@@ -182,6 +182,17 @@ scheduler_events = {
 # Overriding Methods
 # ------------------------------
 #
+# Workaround for Frappe v16's workspace localization gap: the workspace title
+# and the JSON content blob (header text, card/chart references) are returned
+# to the desk untranslated. The wrappers in `frappe_giving.workspace_i18n`
+# post-process the responses through `_()`. Remove the two entries below and
+# delete `workspace_i18n.py` once upstream wires translation into these paths.
+override_whitelisted_methods = {
+	"frappe.desk.desktop.get_desktop_page": "frappe_giving.workspace_i18n.get_desktop_page",
+	"frappe.desk.desktop.get_workspace_sidebar_items": "frappe_giving.workspace_i18n.get_workspace_sidebar_items",
+}
+
+# Example of original commented-out form retained for reference:
 # override_whitelisted_methods = {
 # 	"frappe.desk.doctype.event.event.get_events": "frappe_giving.event.get_events"
 # }
