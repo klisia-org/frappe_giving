@@ -13,9 +13,7 @@ def on_submit(doc, method=None):
 	if not getattr(doc, "subscription", None):
 		return
 
-	donation_name = frappe.db.get_value(
-		"Donation", {"erpnext_subscription": doc.subscription}, "name"
-	)
+	donation_name = frappe.db.get_value("Donation", {"erpnext_subscription": doc.subscription}, "name")
 	if not donation_name:
 		return
 

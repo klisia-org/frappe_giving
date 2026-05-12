@@ -14,8 +14,8 @@ import frappe
 
 
 def execute():
-    rows = frappe.db.sql(
-        """
+	rows = frappe.db.sql(
+		"""
         SELECT DISTINCT d.name, d.donor_since
         FROM `tabDonor` d
         JOIN `tabDonation` dn ON dn.donor = d.name
@@ -23,18 +23,18 @@ def execute():
         WHERE dp.status = 'Succeeded'
           AND (d.welcome_email_sent_at IS NULL OR d.welcome_email_sent_at = '')
         """,
-        as_dict=True,
-    )
+		as_dict=True,
+	)
 
-    for row in rows:
-        # donor_since is a Date; cast to a Datetime by appending midnight.
-        stamp = f"{row.donor_since} 00:00:00" if row.donor_since else frappe.utils.now()
-        frappe.db.set_value(
-            "Donor",
-            row.name,
-            "welcome_email_sent_at",
-            stamp,
-            update_modified=False,
-        )
+	for row in rows:
+		# donor_since is a Date; cast to a Datetime by appending midnight.
+		stamp = f"{row.donor_since} 00:00:00" if row.donor_since else frappe.utils.now()
+		frappe.db.set_value(
+			"Donor",
+			row.name,
+			"welcome_email_sent_at",
+			stamp,
+			update_modified=False,
+		)
 
-    frappe.db.commit()
+	frappe.db.commit()
