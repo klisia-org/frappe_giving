@@ -50,7 +50,6 @@ def get_workspace_sidebar_items():
 	return response
 
 
-@frappe.whitelist()
 def _translate_content(content):
 	if not content:
 		return content
