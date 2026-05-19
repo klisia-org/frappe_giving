@@ -17,12 +17,10 @@ this wrapper becomes harmless. To remove, drop the two entries from
 
 import json
 
-import frappe
 from frappe import _
 from frappe.desk import desktop
 
 _CONTENT_TEXT_TYPES = {"header", "paragraph"}
-
 
 @frappe.whitelist()
 def get_desktop_page(page):
@@ -39,7 +37,6 @@ def get_desktop_page(page):
 					item.label = translated
 	return response
 
-
 @frappe.whitelist()
 def get_workspace_sidebar_items():
 	response = desktop.get_workspace_sidebar_items() or {}
@@ -48,7 +45,6 @@ def get_workspace_sidebar_items():
 			page["title"] = _(page["title"])
 		page["content"] = _translate_content(page.get("content"))
 	return response
-
 
 @frappe.whitelist()
 def _translate_content(content):
