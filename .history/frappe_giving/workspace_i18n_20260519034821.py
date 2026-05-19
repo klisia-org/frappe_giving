@@ -16,8 +16,8 @@ this wrapper becomes harmless. To remove, drop the two entries from
 """
 
 import json
-
 import frappe
+
 from frappe import _
 from frappe.desk import desktop
 
