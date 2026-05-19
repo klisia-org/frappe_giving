@@ -49,12 +49,11 @@ jobs:
         with:
           path: frappe_giving
 
-      - name: Checkout seminary (provides @seminary/portal-shell)
-        uses: actions/checkout@v4
-        with:
-          repository: klisia-org/seminary
-          path: seminary
-          ref: main
+      - name: Clone seminary (provides @seminary/portal-shell)
+        # Anonymous HTTPS clone — `actions/checkout` defaults to GITHUB_TOKEN,
+        # which is scoped to this repo and rejected for cross-repo fetches.
+        # seminary is public, so no auth is required.
+        run: git clone --depth 1 --branch main https://github.com/klisia-org/seminary.git seminary
 
       - name: Set up Node
         uses: actions/setup-node@v4
