@@ -25,7 +25,7 @@ _CONTENT_TEXT_TYPES = {"header", "paragraph"}
 
 
 @frappe.whitelist()
-def get_desktop_page(page):
+def get_desktop_page(page: str):
 	response = desktop.get_desktop_page(page) or {}
 	for key in ("cards", "charts", "shortcuts", "quick_lists", "number_cards", "custom_blocks"):
 		section = response.get(key) or {}
