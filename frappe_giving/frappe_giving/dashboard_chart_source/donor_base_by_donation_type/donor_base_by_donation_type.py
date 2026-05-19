@@ -13,6 +13,7 @@ not counted — they're prospects, not part of the active base.
 """
 
 import frappe
+from frappe import _
 from frappe.utils import cint
 
 
@@ -38,15 +39,25 @@ def get(
 	# contention that UPDATE can hit a lock-wait timeout (1205) on
 	# `tabDashboard Chart`. We don't need that timestamp for anything;
 	# skipping the write avoids the issue entirely.
+	#
+	# Cache stores the source-language result; translation happens at the
+	# response edge so the cache key stays language-agnostic.
 	cache_key = f"chart-data:{chart_name or 'donor-base-by-donation-type'}"
 	if not cint(refresh):
 		cached = frappe.cache.get_value(cache_key)
 		if cached:
-			return frappe.parse_json(frappe.safe_decode(cached))
+			return _translate(frappe.parse_json(frappe.safe_decode(cached)))
 
 	result = _compute()
 	frappe.cache.set_value(cache_key, frappe.as_json(result))
-	return result
+	return _translate(result)
+
+
+def _translate(result):
+	return {
+		"labels": [_(label) for label in result["labels"]],
+		"datasets": [{**ds, "name": _(ds["name"])} for ds in result["datasets"]],
+	}
 
 
 def _compute():
