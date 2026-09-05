@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: frappe_giving\n"
 "Report-Msgid-Bugs-To: support@klisia.org\n"
-"POT-Creation-Date: 2026-05-12 15:54-0609\n"
-"PO-Revision-Date: 2026-05-12 21:03\n"
+"POT-Creation-Date: 2026-05-19 05:14-0609\n"
+"PO-Revision-Date: 2026-05-20 07:34\n"
 "Last-Translator: support@klisia.org\n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -422,6 +422,10 @@ msgstr "Donación {0} – {1}"
 msgid "Donations"
 msgstr "Donaciones"
 
+#: frappe_giving/translatable_strings.py:25
+msgid "Donations per Month"
+msgstr "Donaciones mensuales"
+
 #. Label of the donor_section (Section Break) field in DocType 'Donation'
 #. Label of the donor (Link) field in DocType 'Donation'
 #. Name of a role
@@ -433,6 +437,10 @@ msgstr "Donaciones"
 #: frappe_giving/frappe_giving/workspace/frappe_giving/frappe_giving.json
 msgid "Donor"
 msgstr "Donante"
+
+#: frappe_giving/translatable_strings.py:22
+msgid "Donor Base"
+msgstr "Base de Donantes"
 
 #. Label of the cover_fees (Check) field in DocType 'Donation'
 #: frappe_giving/frappe_giving/doctype/donation/donation.json
@@ -830,7 +838,7 @@ msgstr "Artículo para la recuperación de comisiones"
 #. Label of the label (Data) field in DocType 'Campaign Form Giving Level'
 #: frappe_giving/frappe_giving/doctype/campaign_form_giving_level/campaign_form_giving_level.json
 msgid "Label"
-msgstr "Etiqueta"
+msgstr "Título"
 
 #. Option for the 'Status' (Select) field in DocType 'Donor'
 #: frappe_giving/frappe_giving/doctype/donor/donor.json
@@ -1361,7 +1369,7 @@ msgstr "Tipo y Frecuencia"
 #. Label of the exchange_rate (Float) field in DocType 'Donation Payment'
 #: frappe_giving/frappe_giving/doctype/donation_payment/donation_payment.json
 msgid "USD Exchange Rate"
-msgstr "Tipo de cambio USD"
+msgstr "Cambio USD"
 
 #: frappe_giving/frappe_giving/doctype/campaign_form/campaign_form.js:57
 msgid "Use this two-part approach when the host page's editor strips <code>&lt;script&gt;</code> and <code>&lt;link&gt;</code> tags — for example, the <b>Section with Embed</b> Web Template (Markdown), or any Markdown content area."
@@ -1414,27 +1422,31 @@ msgstr "No tiene permiso para acceder a este recibo."
 msgid "Your {0} donation statement from {1}"
 msgstr "Su estado de donaciones de {0} de {1}"
 
-#: frappe_giving/workspace_i18n.py:68
+#: frappe_giving/workspace_i18n.py:71
 msgid "card_name"
-msgstr ""
+msgstr "nombre de la tarjeta"
 
-#: frappe_giving/workspace_i18n.py:70
+#: frappe_giving/workspace_i18n.py:73
 msgid "chart_name"
-msgstr ""
+msgstr "nombre del gráfico"
 
 #: frappe_giving/api/notifications.py:150 frappe_giving/api/receipts.py:262
 msgid "friend"
 msgstr "amigo"
 
+#: frappe_giving/frappe_giving/dashboard_chart_source/donor_base_by_donation_type/donor_base_by_donation_type.py:59
+msgid "name"
+msgstr "nombre"
+
 #: frappe_giving/api/notifications.py:147 frappe_giving/api/receipts.py:259
 msgid "our organisation"
 msgstr "nuestra organización"
 
-#: frappe_giving/workspace_i18n.py:66
+#: frappe_giving/workspace_i18n.py:69
 msgid "text"
-msgstr ""
+msgstr "texto"
 
-#: frappe_giving/workspace_i18n.py:45
+#: frappe_giving/workspace_i18n.py:48
 msgid "title"
-msgstr ""
+msgstr "título"
 
