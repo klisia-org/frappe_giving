@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: frappe_giving\n"
 "Report-Msgid-Bugs-To: support@klisia.org\n"
-"POT-Creation-Date: 2026-05-12 15:54-0609\n"
-"PO-Revision-Date: 2026-05-12 21:03\n"
+"POT-Creation-Date: 2026-05-19 05:14-0609\n"
+"PO-Revision-Date: 2026-05-19 10:32\n"
 "Last-Translator: support@klisia.org\n"
 "Language-Team: Portuguese, Brazilian\n"
 "MIME-Version: 1.0\n"
@@ -422,6 +422,10 @@ msgstr "Doação {0} – {1}"
 msgid "Donations"
 msgstr "Doações"
 
+#: frappe_giving/translatable_strings.py:25
+msgid "Donations per Month"
+msgstr "Doações por Mês"
+
 #. Label of the donor_section (Section Break) field in DocType 'Donation'
 #. Label of the donor (Link) field in DocType 'Donation'
 #. Name of a role
@@ -433,6 +437,10 @@ msgstr "Doações"
 #: frappe_giving/frappe_giving/workspace/frappe_giving/frappe_giving.json
 msgid "Donor"
 msgstr "Doador"
+
+#: frappe_giving/translatable_strings.py:22
+msgid "Donor Base"
+msgstr "Base de Doadores"
 
 #. Label of the cover_fees (Check) field in DocType 'Donation'
 #: frappe_giving/frappe_giving/doctype/donation/donation.json
@@ -1414,11 +1422,11 @@ msgstr "Você não tem permissão para acessar este recibo."
 msgid "Your {0} donation statement from {1}"
 msgstr "Seu extrato de doações de {0} de {1}"
 
-#: frappe_giving/workspace_i18n.py:68
+#: frappe_giving/workspace_i18n.py:71
 msgid "card_name"
 msgstr "card_name"
 
-#: frappe_giving/workspace_i18n.py:70
+#: frappe_giving/workspace_i18n.py:73
 msgid "chart_name"
 msgstr "chart_name"
 
@@ -1426,15 +1434,19 @@ msgstr "chart_name"
 msgid "friend"
 msgstr "amigo"
 
+#: frappe_giving/frappe_giving/dashboard_chart_source/donor_base_by_donation_type/donor_base_by_donation_type.py:59
+msgid "name"
+msgstr "nome"
+
 #: frappe_giving/api/notifications.py:147 frappe_giving/api/receipts.py:259
 msgid "our organisation"
 msgstr "nossa organização"
 
-#: frappe_giving/workspace_i18n.py:66
+#: frappe_giving/workspace_i18n.py:69
 msgid "text"
 msgstr "text"
 
-#: frappe_giving/workspace_i18n.py:45
+#: frappe_giving/workspace_i18n.py:48
 msgid "title"
 msgstr "title"
 
